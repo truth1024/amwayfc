@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.richmobi.amwayfc.persistence.UserMapper">
+
+	<resultMap type="user" id="userMap">
+		<id property="id" column="id"/>
+		<result property="code" column="code"/>
+		<result property="registerId" column="register_id"/>
+		<result property="type" column="u_type"/>
+		<result property="name" column="name"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+		<result property="company" column="company"/>
+		<result property="title" column="title"/>
+		<result property="companyAdd" column="company_address"/>
+		<result property="note" column="note"/>
+		<result property="imageName" column="qr_img_name"/>
+		<result property="createDate" column="create_date"/>
+		<result property="photoName" column="photo_name"/>
+		<result property="daren" column="daren"/>
+		<result property="prize" column="prize"/>
+		<result property="seatNumber" column="seat_number"/>
+	</resultMap>
+	<sql id="select_user_sql_segment">
+		SELECT
+			id, code,register_id, u_type, name , phone, email, company, title, company_address,
+			note, qr_img_name, create_date, photo_name, daren, prize,seat_number 
+		FROM
+			t_user
+	</sql>
+
+	<insert id="insert" parameterType="user">
+		<selectKey keyProperty="id" resultType="long">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO t_user
+			(register_id, u_type, code, name , phone, email,company,title,company_address,note, qr_img_name, photo_name, daren, prize,seat_number)
+		VALUES
+			(#{registerId},#{type}, #{code}, #{name}, #{phone}, #{email}, #{company},#{title},#{companyAdd},#{note},#{imageName},#{photoName},#{daren},#{prize},#{seatNumber})
+	</insert>
+	
+	<insert id="batchInsertUser">
+		INSERT INTO t_user
+			(register_id, u_type, code, name , phone, email,company,title,company_address,note, qr_img_name, photo_name, daren, prize,seat_number)
+		VALUES
+			<foreach collection="list" index="index" item="user" separator=",">
+				(#{registerId},#{type}, #{code}, #{name}, #{phone}, #{email}, #{company},#{title},#{companyAdd},#{note},#{imageName},#{photoName},#{daren},#{prize},#{seatNumber})
+			</foreach>
+	</insert>
+	
+	<delete id="delete" parameterType="long">
+		delete from 
+			t_user
+		where
+			id = #{value}
+	</delete>
+	
+	<update id="update" parameterType="user">
+		UPDATE
+			t_user
+		SET
+			u_type = #{type}, code = #{code}, name = #{name}, phone = #{phone}, email = #{email}, title = #{title},
+			company = #{company}, company_address = #{companyAdd}, note = #{note},
+			qr_img_name = #{imageName}, photo_name = #{photoName}, daren = #{daren},seat_number = #{seatNumber},prize = #{prize}
+		WHERE
+			<if test="id != 0">
+				id = #{id}
+			</if>
+			<if test="id == 0">
+				code = #{code}
+			</if>
+	</update>
+	
+	<update id="updatePhotoName" parameterType="user">
+		UPDATE
+			t_user
+		SET
+			photo_name = #{photoName}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<update id="updateDaren" parameterType="user">
+		UPDATE
+			t_user
+		SET
+			daren = #{daren}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<update id="updatePrize" parameterType="user">
+		UPDATE
+			t_user
+		SET
+			prize = #{prize}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<select id="getById" parameterType="long" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		WHERE
+			id = #{id}
+	</select>
+	
+	<select id="getByCode" parameterType="string" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		WHERE
+			code = #{code}
+	</select>
+	
+	<select id="getByRegisterId" parameterType="long" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		WHERE
+			register_id = #{registerId}
+	</select>
+	
+	<select id="getByConditionsWithPage" parameterType="map" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		<where>
+			<if test="type != null">
+				u_type = #{type}
+			</if>
+			<if test="name != null">
+				and name LIKE "${name}%"
+			</if>
+			<if test="code != null">
+				and code = #{code}
+			</if>
+			<if test="phone != null">
+				AND phone = #{phone}
+			</if>
+			<if test="email">
+				AND email LIKE "${email}%"
+			</if>
+			<if test="company">
+				AND company LIKE "${company}%"
+			</if>
+			<if test="title">
+				AND title LIKE "${title}%"
+			</if>
+			<if test="checkinNum != null">
+					and exists (select COUNT(id) AS cn from t_checkin_record where t_user.id = t_checkin_record.u_id HAVING cn = #{checkinNum})
+			</if>
+		</where>
+		<if test="smsPage">
+			GROUP BY phone
+		</if>
+			ORDER BY 
+			create_date DESC
+		LIMIT #{start},#{limit}
+	</select>
+	
+	<select id="getAllByConditions" parameterType="map" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		<where>
+			<if test="type != null">
+				u_type = #{type}
+			</if>
+			<if test="name != null">
+				and name = #{name}
+			</if>
+			<if test="code != null">
+				and code = #{code}
+			</if>
+			<if test="phone != null">
+				AND phone = #{phone}
+			</if>
+			<if test="email">
+				AND email LIKE "${email}%"
+			</if>
+			<if test="company">
+				AND company LIKE "${company}%"
+			</if>
+			<if test="title">
+				AND title LIKE "${title}%"
+			</if>
+			<if test="checkinNum != null">
+				and exists (select COUNT(id) AS cn from t_checkin_record where t_user.id = t_checkin_record.u_id HAVING cn = #{checkinNum})
+			</if>
+		</where>
+		<if test="smsPage">		
+			GROUP BY phone
+		</if>
+		ORDER BY 
+			create_date DESC
+	</select>
+	
+	<!-- 查询满足条件的记录数，暂时还没有找到更好的办法。 -->
+	<select id="getCountByConditions" resultType="int" parameterType="map">
+		SELECT 
+			<if test="smsPage">
+				count(DISTINCT phone)
+			</if>
+			<if test="!smsPage">
+				count(id) 
+			</if>
+		FROM 
+			t_user
+		<where>
+			<if test="type != null">
+				u_type = #{type}
+			</if>
+			<if test="name != null">
+				name LIKE "${name}%"
+			</if>
+			<if test="code != null">
+				and code = #{code}
+			</if>
+			<if test="phone != null">
+				AND phone = #{phone}
+			</if>
+			<if test="email">
+				AND email LIKE "${email}%"
+			</if>
+			<if test="company">
+				AND company LIKE "${company}%"
+			</if>
+			<if test="title">
+				AND title LIKE "${title}%"
+			</if>
+			<if test="checkinNum != null">
+				and exists (select COUNT(id) AS cn from t_checkin_record where t_user.id = t_checkin_record.u_id HAVING cn = #{checkinNum})
+			</if>
+		</where>
+	</select>
+	<select id="getAllUser" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+	</select>
+	
+	
+	<select id="getByPhone" resultMap="userMap" parameterType="string">
+		<include refid="select_user_sql_segment"/>
+		WHERE
+			phone = #{phone}
+	</select>
+	
+	<select id="getAllUserWithPage" parameterType="map" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		ORDER BY 
+			create_date DESC
+		LIMIT #{start},#{limit}
+	</select>
+	
+	<select id="getUsersWithoutCodeOrImgName" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		WHERE
+			code is null or qr_img_name is null
+	</select>
+	
+	<select id="orderByCodeOrDate" parameterType="map" resultMap="userMap">
+		<include refid="select_user_sql_segment"/>
+		<where>
+			<if test="type != null">
+				u_type = #{type}
+			</if>
+			<if test="name != null">
+				and name like  '${name}%'
+			</if>
+			<if test="code != null">
+				and code = #{code}
+			</if>
+			<if test="phone != null">
+				AND phone = #{phone}
+			</if>
+			<if test="email">
+				AND email LIKE "${email}%"
+			</if>
+			<if test="company">
+				AND company LIKE "${company}%"
+			</if>
+			<if test="title">
+				AND title LIKE "${title}%"
+			</if>
+			<if test="checkinNum != null">
+				and exists (select COUNT(id) AS cn from t_checkin_record where t_user.id = t_checkin_record.u_id HAVING cn = #{checkinNum})
+			</if>
+		</where>
+		<if test="smsPage">		
+			GROUP BY phone
+		</if>
+			<if test="orderType == 2">
+		ORDER BY 
+				id DESC
+			</if>
+<!-- 			<if test="orderType == 3"> -->
+<!-- 		ORDER BY  -->
+<!-- 				photo_date  -->
+<!-- 			</if> -->
+<!-- 			<if test="orderType == 4"> -->
+<!-- 		ORDER BY  -->
+<!-- 				photo_date DESC -->
+<!-- 			</if> -->
+		LIMIT #{start},#{limit}
+	</select>
+
+	
+</mapper>
