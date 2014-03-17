@@ -7,10 +7,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.richmobi.amwayfc.domain.CheckinRecd;
 import com.richmobi.amwayfc.domain.SmsSendRecd;
 import com.richmobi.amwayfc.domain.User;
-import com.richmobi.amwayfc.domain.UserType;
 
 /** 
 * @ClassName: AbstractTestCase 
@@ -30,32 +28,6 @@ public class AbstractTestCase {
 	}
 
 	protected static final User user = new User();
-	protected static final User u = new User();
-	static{
-		user.setName("张双飞");
-		user.setCode("node");
-		user.setPhone("18611747435");
-		user.setEmail("shuangfei.zhang@richmobi.com");
-		user.setCompany("company");
-		user.setCompanyAdd("companyAdd");
-		user.setImageName("10c015c8.png");
-		user.setNote("note");
-		user.setTitle("title");
-	}
 	
-	protected static final CheckinRecd checkinRecd = new CheckinRecd();
-	
-	static{
-		checkinRecd.setUserId(4L);
-		checkinRecd.setCheckinWary(0);
-	}
-	
-	protected static final SmsSendRecd smsSendRecd = new SmsSendRecd();
-	
-	static{
-		smsSendRecd.setId(1L);
-	}
-	
-	protected static final UserType userType = new UserType();
 	
 }
