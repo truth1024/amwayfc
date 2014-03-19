@@ -1,6 +1,7 @@
 package com.richmobi.amwayfc.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /** 
 * @ClassName: User 
@@ -15,7 +16,7 @@ public class User extends AbstractDomain {
 	private static final long serialVersionUID = -1138145628576921850L;
 	
 	private long id;
-	private long logincode;
+	private String logincode;
 	private String name;
 	private String phone;
 	private String sex;
@@ -35,6 +36,8 @@ public class User extends AbstractDomain {
 	private String diet;
 	private int istake;
 	
+	private List<Journey> js;
+	private List<Long> cuids;
 	
 	public long getId() {
 		return id;
@@ -42,10 +45,10 @@ public class User extends AbstractDomain {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getLogincode() {
+	public String getLogincode() {
 		return logincode;
 	}
-	public void setLogincode(long logincode) {
+	public void setLogincode(String logincode) {
 		this.logincode = logincode;
 	}
 	public String getName() {
@@ -155,5 +158,17 @@ public class User extends AbstractDomain {
 	}
 	public void setIstake(int istake) {
 		this.istake = istake;
+	}
+	public List<Journey> getJs() {
+		return js;
+	}
+	public void setJs(List<Journey> js) {
+		this.js = js;
+	}
+	public List<Long> getCuids() {
+		return cuids;
+	}
+	public void setCuids(List<Long> cuids) {
+		this.cuids = cuids;
 	}
 }

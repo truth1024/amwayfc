@@ -27,13 +27,13 @@ public class AuthFilter implements Filter{
 			HttpServletRequest req = (HttpServletRequest)request;
 			HttpServletResponse res = (HttpServletResponse) response;
 			String name = (String) req.getSession().getAttribute("identity");
-			if(StringUtils.isBlank(name)){
-				res.sendRedirect("../login.jsp");
+			if(!StringUtils.isBlank(name)){
+				res.sendRedirect("../login.html");
 			} else {
 				chain.doFilter(request, response);
 			}
 		} else {
-			request.getRequestDispatcher("../error.jsp");
+			request.getRequestDispatcher("../error.html");
 		}
 	}
 

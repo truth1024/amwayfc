@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.richmobi.amwayfc.persistence.LoginMapper">
+
+	<sql id="select_login_sql_segment">
+		SELECT
+			id, logincode, isfirst,password
+		FROM
+			t_login
+	</sql>
+	
+	<insert id="batchInsert">
+		INSERT INTO t_login
+			(logincode, password,md5password)
+		VALUES
+			<foreach collection="list" index="index" item="login" separator=",">
+				(#{login.logincode},#{login.password},#{login.md5password})
+			</foreach>
+	</insert>
+	
+	<select id="getLogin" parameterType="login" resultType="login">
+		<include refid="select_login_sql_segment"/>
+		WHERE
+			logincode = #{logincode}
+		AND
+			md5password = #{md5password}
+	</select>
+	
+	<update id="update" parameterType="login">
+		UPDATE
+			t_login
+		SET
+			isfirst = 2
+		<if test="passowrd != null">
+			password = #{password},md5password = #{md5password}
+		</if>
+		WHERE 
+			logincode = #{logincode}
+	</update>
+</mapper>

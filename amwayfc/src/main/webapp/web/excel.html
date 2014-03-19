@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>导入/导出</title>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+	font-family: "微软雅黑",Verdana, Arial, Helvetica, sans-serif;
+	background:#016AA9;
+	color:#fff;
+	outline:none;
+}
+div {
+	position: relative;
+	top: 120px;
+	text-align:center;
+}
+.submit {
+	clear: both;
+	position: relative;
+	border: 1px solid black;
+	background: blue;
+	color: white;
+	width: 70px;
+	height: 30px;
+	border-radius: 6px;
+	box-shadow: #000 3px 3px;
+	cursor: pointer;
+}
+.submit:hover{
+	background:#6D6DFF;
+}
+.submit:active{
+	top:3px;
+	left:3px;
+	box-shadow: #000 0px 0px;
+	background:#6D6DFF;
+}
+#excel_contain{
+	width:500px;
+	min-height:400px;
+	margin: 0 auto;
+	background:rgba(0,0,0,0.3)!important;
+	border: 4px solid blue;
+	border-radius: 8px;
+	box-shadow: 0 0 1px #fff, 0 0 3px #000, 0 0 3px #000, inset 0 1px #fff, inset 0 12px rgba(255,255,255,0.15), inset 0 4px 10px #cef, inset 0 22px 5px #0773b4, inset 0 -5px 10px #0df;
+}
+</style>
+<script type="text/javascript">
+	function formCheck(form){
+		if(form.excelFile.value == ""){
+			alert("请选择上传的文件");
+			return false;
+		}else{
+			str= form.excelFile.value;
+            strs=str.toLowerCase();
+            arr = strs.split(".");
+            extname = arr[arr.length-1];
+           	if(extname != "xls" && extname != "xlsx"){
+	             alert("请选择excel格式文件！");
+	             return false;
+            }
+		}
+	}
+</script>
+</head>
+<body>
+<div id="excel_contain">
+	<h2 style="position:relative">excel导入</h2>
+	<form name="readExcel" action="excel_importExcel" method="post" enctype="multipart/form-data" onsubmit="return formCheck(this);">   
+	    Excel文件路径:&nbsp;<input style="width:150px" type="file" name="excelFile"><br><br>
+	    <input class="submit" type="submit" value="导入">
+	</form>
+	<div style="position: initial;top: 20px;width: 400px;margin:10px auto;">
+<!-- 		${tip} -->
+	</div>
+</div>
+</body>
+</html>

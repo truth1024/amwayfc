@@ -3,6 +3,8 @@ package com.richmobi.amwayfc.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import richmobi.commons.utils.MD5Util;
+
 public class Utils {
 
 	private static String phoneBasic = "((?:(?:13[0-9])|(?:15[^4,\\D])|(?:18[0,2,5-9]))\\d{8})";
@@ -40,6 +42,15 @@ public class Utils {
 	public static boolean isMobile(String value){
 		String phoneRegex = "^"+phoneBasic+"$";
 		return isMatch(value,phoneRegex);
+	}
+	
+	public static String MD5Encryption(String password){
+		try {
+			return MD5Util.encryptByMD5(password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 	public static void main(String[] args) {
 		System.out.println(clearSpaceCharacter("      王 冉　" ));

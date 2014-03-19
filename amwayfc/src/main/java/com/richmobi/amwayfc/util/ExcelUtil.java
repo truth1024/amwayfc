@@ -3,6 +3,8 @@ package com.richmobi.amwayfc.util;
 import java.io.*;
 import java.text.*;
 import java.util.*;
+import java.util.zip.Adler32;
+import java.util.zip.CRC32;
 
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.*;
@@ -11,16 +13,13 @@ import org.apache.poi.xssf.usermodel.*;
 
 public class ExcelUtil {
 
+	private static final char[] CHAR_TEMPLATE = new char[] { '0', '0', '0',
+		'0', '0', '0', '0', '0' };
 	private static final int version2003 = 2003;
 	private static final int version2007 = 2007;
 
-	public static void main(String args[]) {
-		String filePath = "D://test1.xlsx";
-		new ExcelUtil().readExcel(filePath);
-	}
-
 	// excel版本号
-	private int version = version2003;;
+	private int version = version2003;
 
 	// 开始入库的行
 	private int begin = 0;
@@ -35,7 +34,10 @@ public class ExcelUtil {
 	public int getBegin() {
 		return begin;
 	}
-
+	public void setBegin(int begin) {
+		this.begin = begin;
+	}
+	
 	/**
 	 * 
 	 * 读取excel，遍历各个小格获取其中信息
@@ -142,10 +144,6 @@ public class ExcelUtil {
 		}
 	}
 
-	public void setBegin(int begin) {
-		this.begin = begin;
-	}
-
 	private Workbook createWorkbook(String filePath)
 			throws FileNotFoundException, IOException {
 		Workbook workbook = null;
@@ -167,6 +165,7 @@ public class ExcelUtil {
 		}
 		return version;
 	}
+
 	/**
 	 * 
 		 * 功能: 判断类型
@@ -196,7 +195,7 @@ public class ExcelUtil {
 						}
 					} else {
 						value = new DecimalFormat("#").format(cell.getNumericCellValue());
-						System.out.println("value:"+value);
+//						System.out.println("value:"+value);
 					}
 					break;
 				case HSSFCell.CELL_TYPE_FORMULA:
@@ -223,5 +222,44 @@ public class ExcelUtil {
 			value = "";
 		}
 		return value;
+	}
+
+	public static int toYesOrNo(Cell cell){
+		String str = typeCast(cell).toString();
+		return str.equals("否") || str.equals("") ? 2 : 1;
+	}
+	
+	public static int isAdult(int age){
+		return age < 18 ? 2 : 1;
+	}
+
+	public static String calculateCrc32(String source){
+		CRC32 crc32 = new CRC32();
+		Adler32 adler32 = new Adler32();
+		adler32.update(source.getBytes());
+		crc32.update(source.getBytes());
+		StringBuilder builder = new StringBuilder(8);
+		builder.append(Long.toHexString(crc32.getValue()));
+		if (builder.length() < 8) {
+			builder.append(CHAR_TEMPLATE, 0, 8 - builder.length());
+		}
+		System.out.println("crc32 : "+builder.toString());
+		return builder.toString();
+	}
+	
+	public static String subLogincode(Cell cell){
+		String logincode = typeCast(cell).toString();
+		if(logincode.indexOf("/") > -1){
+			logincode = logincode.split("/")[0];
+		}
+		return logincode;
+	}
+
+	public static int isTakeChildren(String nature){
+		int isTake = 2;
+		if(nature.equals("FC") || nature.equals("特邀配偶")){
+			isTake = 1;
+		}
+		return isTake;
 	}
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.richmobi.amwayfc.persistence.JourneyMapper">
+
+	<sql id="select_journey_sql_segment">
+		SELECT
+			id, title, briefinfo, start, end, infopath, num, istake, remainnum
+		FROM
+			t_journey
+	</sql>
+	
+	<select id="getJourneysByUid" parameterType="long" resultType="journey">
+		SELECT
+			j.id, j.title, j.briefinfo, j.start, j.end, j.infopath, j.num, j.istake, j.remainnum
+		FROM
+			t_journey AS j , t_user_journey AS uj
+		WHERE 
+			uj.jid = j.id
+		AND
+			uj.uid = #{uid}
+	</select>
+	
+	<select id="getJourneys" resultType="journey">
+		<include refid="select_journey_sql_segment"/>
+		WHERE 
+			id > 4
+	</select>
+	
+	<select id="getRemainNumById" parameterType="long" resultType="int">
+		SELECT 
+			remainnum
+		FROM 
+			t_journey
+		WHERE
+			id = #{id}
+	</select>
+	
+	<update id="updateJoinNum" parameterType="long">
+		UPDATE 
+			t_journey
+		SET
+			remainnum = remainnum-1
+		WHERE
+			id = #{id}
+	</update>
+</mapper>

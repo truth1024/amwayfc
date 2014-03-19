@@ -31,11 +31,11 @@
   </filter-mapping>
   <filter-mapping>
     <filter-name>authFilter</filter-name>
-    <url-pattern>/admin/main.jsp</url-pattern>
+    <url-pattern>/web/*</url-pattern>
   </filter-mapping>
   <filter-mapping>
     <filter-name>struts2</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/web/*</url-pattern>
   </filter-mapping>
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
@@ -51,11 +51,12 @@
   <listener>
     <listener-class>com.richmobi.amwayfc.listener.ContextListener</listener-class>
   </listener>
+  
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>login.html</welcome-file>
   </welcome-file-list>
   <mime-mapping>
     <extension>avi</extension>
