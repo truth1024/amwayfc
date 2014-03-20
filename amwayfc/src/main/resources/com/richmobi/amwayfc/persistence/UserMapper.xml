@@ -79,7 +79,7 @@
 	
 	<select id="getUsersByCondition" parameterType="map" resultMap="userMap">
 		<include refid="select_user_sql_segment"/>
-		<if test="row != 0">
+		<if test="row != null and row != 0">
 			limit #{offset},#{row}
 		</if>
 	</select>

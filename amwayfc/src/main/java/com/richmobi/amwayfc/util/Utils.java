@@ -1,5 +1,7 @@
 package com.richmobi.amwayfc.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +23,37 @@ public class Utils {
 	public static String clearSpaceCharacter(String value){
 		String regex = "(?i)[^a-zA-Z0-9\u4E00-\u9FA5]";
 		return value.replaceAll(regex, "");
+	}
+	
+	/**
+	 * 
+	* @Title: dateFormat
+	* @Description: 日期格式化（yyyy-MM-dd）
+	* @param @param myDate
+	* @param @return
+	* @return String
+	* @throws
+	 */
+	public static String dateFormat(Date myDate){
+		return basicFormat(myDate, "yyyy-MM-dd");
+	}
+	
+	/** 
+	* @Title: basicFormat
+	* @Description: 自定义日期格式化
+	* @param @param myDate
+	* @param @param fromatString
+	* @param @return
+	* @return String
+	* @throws 
+	*/ 
+	public static String basicFormat(Date myDate,String fromatString){
+		if(myDate != null){
+			SimpleDateFormat myFormat = new SimpleDateFormat(fromatString);
+			return myFormat .format(myDate);
+		}else{
+			return "";
+		}
 	}
 	
 	/**

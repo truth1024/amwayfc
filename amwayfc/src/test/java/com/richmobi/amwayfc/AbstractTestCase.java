@@ -19,7 +19,7 @@ import com.richmobi.amwayfc.domain.User;
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml","/applicationContext-email.xml","/applicationContext_sms_rpc.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 @Transactional
 public class AbstractTestCase {
 	@Test
@@ -28,6 +28,9 @@ public class AbstractTestCase {
 	}
 
 	protected static final User user = new User();
+	static{
+		user.setPhone("13439401564");
+	}
 	
 	
 }

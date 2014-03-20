@@ -12,5 +12,15 @@
 			<result type="redirect" >excel.html</result>
 			<result name="error">error.html?tip={tip}</result>
 		</action>
+		
+		<action name="export" class="com.richmobi.amwayfc.action.ExcelAction">
+			<result type="stream">
+                <param name="encode">true</param>
+                <param name="contentType">application/vnd.ms-excelcharset=GBK</param>
+                <param name="inputName">execlStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">5024</param>
+            </result>
+		</action>
 	</package>
 </struts>

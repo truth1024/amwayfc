@@ -13,6 +13,12 @@ import org.apache.poi.xssf.usermodel.*;
 
 public class ExcelUtil {
 
+	//用户表头名称
+	private static String[] userHeader = {"所属区域","区域","省份","城市","店铺",
+											"户籍编号","性质","姓名","家属关系",
+											"性别","出生日期","年龄","出席情况",
+											"签证","机票","餐饮禁忌","纽约项目电话"};
+	
 	private static final char[] CHAR_TEMPLATE = new char[] { '0', '0', '0',
 		'0', '0', '0', '0', '0' };
 	private static final int version2003 = 2003;
@@ -157,6 +163,24 @@ public class ExcelUtil {
 		return workbook;
 	}
 
+	public static HSSFSheet createSheet(HSSFWorkbook workbook,int exportType){
+		HSSFSheet sheet = workbook.createSheet("sheet1");
+		HSSFRow row = sheet.createRow(0);
+        HSSFCell cell = null;
+        String[] temp = null;
+        switch(exportType){
+	        case 1: temp = userHeader;
+	        	break;
+        }
+        if(temp != null){
+        	for(int i = 0,len = temp.length;i<len;i++){
+        		cell = row.createCell(i);
+        		cell.setCellValue(temp[i]);
+        	}
+        }
+		return sheet;
+	}
+	
 	private int getVersion(String filePath) {
 		if (filePath.endsWith(".xls")) {
 			version = version2003;
@@ -227,6 +251,9 @@ public class ExcelUtil {
 	public static int toYesOrNo(Cell cell){
 		String str = typeCast(cell).toString();
 		return str.equals("否") || str.equals("") ? 2 : 1;
+	}
+	public static String toYesOrNo(int yorn){
+		return yorn == 2 ? "否" : "是";
 	}
 	
 	public static int isAdult(int age){

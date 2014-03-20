@@ -8,6 +8,8 @@
 */ 
 package com.richmobi.amwayfc.action;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,6 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -27,6 +32,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.richmobi.amwayfc.domain.Login;
+import com.richmobi.amwayfc.domain.PageResult;
 import com.richmobi.amwayfc.domain.Sms;
 import com.richmobi.amwayfc.domain.User;
 import com.richmobi.amwayfc.service.LoginService;
@@ -48,9 +54,10 @@ public class ExcelAction extends BasicAction {
 	private static final Logger log = Logger.getLogger(ExcelAction.class);
 	
 	private String tip;
-	private File excelFile; //上传的文件
-    private String excelFileFileName; //保存原始文件名     
+	private File excelFile; 			//上传的文件
+    private String excelFileFileName; 	//保存原始文件名     
     private User user;
+    private String fileName;			//文件名
     
     @Autowired
     LoginService loginService;
@@ -68,6 +75,82 @@ public class ExcelAction extends BasicAction {
         	return null;
         }
     }
+    
+    public InputStream getExeclStream(){
+		HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = ExcelUtil.createSheet(workbook, 1);
+        switch(1){
+        case 1:
+        	fileName = "users.xls";
+        	sheet = users(sheet);
+        	break;
+        }
+        
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            workbook.write(baos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        byte[] ba = baos.toByteArray();
+        ByteArrayInputStream bais = new ByteArrayInputStream(ba);
+        return bais;
+	}
+    
+    public HSSFSheet users(HSSFSheet sheet){
+		PageResult<User> upr = userService.getUsersByCondition(null, 0, 0);
+		List<User> us = upr.getData();
+		if(us != null){
+			User u = null;
+			HSSFRow row = null;
+			HSSFCell cell = null;
+			for(int i = 0,len = us.size();i<len;i++){
+				u = us.get(i);
+				row = sheet.createRow(i+1);
+				cell = row.createCell(0);
+				cell.setCellValue(u.getAreacode());
+				cell = row.createCell(1);
+				cell.setCellValue(u.getAreaname());
+				cell = row.createCell(2);
+				cell.setCellValue(u.getProvince());
+				cell = row.createCell(3);
+				cell.setCellValue(u.getCity());
+				cell = row.createCell(4);
+				cell.setCellValue(u.getStore());
+				cell = row.createCell(5);
+				cell.setCellValue(u.getLogincode());
+				cell = row.createCell(6);
+				cell.setCellValue(u.getNature());
+				cell = row.createCell(7);
+				cell.setCellValue(u.getName());
+				cell = row.createCell(8);
+				cell.setCellValue(u.getRelation());
+				cell = row.createCell(9);
+				cell.setCellValue(u.getSex());
+				cell = row.createCell(10);
+				cell.setCellValue(Utils.dateFormat(u.getBirthdate()));
+				cell = row.createCell(11);
+				cell.setCellValue(u.getAge());
+				cell = row.createCell(12);
+				cell.setCellValue(ExcelUtil.toYesOrNo(u.getIsjoin()));
+				cell = row.createCell(13);
+				cell.setCellValue(u.getVisa());
+				cell = row.createCell(14);
+				cell.setCellValue(u.getAirticket());
+				cell = row.createCell(15);
+				cell.setCellValue(u.getDiet());
+				cell = row.createCell(16);
+				cell.setCellValue(u.getPhone());
+				u = us.get(i);
+			}
+		}
+		return sheet;
+	}
+    
+    @Override
+	public String execute() throws Exception {
+		return SUCCESS;
+	}
     
     public String importExcel() throws Exception{
         Workbook book = createWorkBook(new FileInputStream(excelFile));
@@ -191,5 +274,11 @@ public class ExcelAction extends BasicAction {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 }
