@@ -31,6 +31,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import richmobi.commons.utils.Configer;
+
 import com.richmobi.amwayfc.domain.Login;
 import com.richmobi.amwayfc.domain.PageResult;
 import com.richmobi.amwayfc.domain.Sms;
@@ -169,6 +171,10 @@ public class ExcelAction extends BasicAction {
         List<User> us = new ArrayList<User>();
         List<Login> ls = new ArrayList<Login>();
         Map<String,Sms> sMap = new HashMap<String, Sms>();
+        //默认密码
+        String password = Configer.get("default.password");
+        String md5Password = Utils.MD5Encryption(password);
+        Sms s = new Sms();
     	//遍历用户信息
     	for (int i = 1;i <= sum;i++){
     		Row ros = sheet.getRow(i);
@@ -210,18 +216,19 @@ public class ExcelAction extends BasicAction {
 				String phone = ExcelUtil.typeCast(ros.getCell(16)).toString();
 				u.setPhone(phone);
 				us.add(u);
+				
 				if(sMap.get(logincode) == null){
 					Login l = new Login();
 					l.setLogincode(logincode);
-					String password = ExcelUtil.calculateCrc32(logincode+name);
-					String md5Password = Utils.MD5Encryption(password);
+//					String password = ExcelUtil.calculateCrc32(logincode+name);
+//					String md5Password = Utils.MD5Encryption(password);
 					l.setPassword(password);
 					l.setMd5password(md5Password);
 					ls.add(l);
-					Sms s = new Sms();
-					s.setName(name);
-					s.setPhone(phone);
-					s.setPassword(password);
+//					Sms s = new Sms();
+//					s.setName(name);
+//					s.setPhone(phone);
+//					s.setPassword(password);
 					sMap.put(logincode, s);
 				}
 				successNum++;
