@@ -15,7 +15,7 @@
 			id, logincode, name, phone, sex, isadult,
 			isjoin, areacode, areaname, province, city,
 			store, nature, relation, birthdate, age,
-			visa, airticket, diet, istake
+			visa, airticket, diet, istake, email
 		FROM
 			t_user
 	</sql>
@@ -29,14 +29,14 @@
 				logincode, name, phone, sex, isadult,
 				isjoin, areacode, areaname, province, city,
 				store, nature, relation, birthdate, age,
-				visa, airticket, diet, istake
+				visa, airticket, diet, istake, email
 			)
 		VALUES
 			(
 				#{logincode}, #{name}, #{phone}, #{sex}, #{isadult},
 				#{isjoin}, #{areacode}, #{areaname}, #{province}, #{city},
 				#{store}, #{nature}, #{relation}, #{birthdate}, #{age},
-				#{visa}, #{airticket}, #{diet}, #{istake}
+				#{visa}, #{airticket}, #{diet}, #{istake}, #{email}
 			)
 	</insert>
 	
@@ -46,7 +46,7 @@
 				logincode, name, phone, sex, isadult,
 				isjoin, areacode, areaname, province, city,
 				store, nature, relation, birthdate, age,
-				visa, airticket, diet, istake
+				visa, airticket, diet, istake, email
 			)
 		VALUES
 			<foreach collection="list" index="index" item="user" separator=",">
@@ -54,7 +54,7 @@
 					#{user.logincode}, #{user.name}, #{user.phone}, #{user.sex}, #{user.isadult},
 					#{user.isjoin}, #{user.areacode}, #{user.areaname}, #{user.province}, #{user.city},
 					#{user.store}, #{user.nature}, #{user.relation}, #{user.birthdate}, #{user.age},
-					#{user.visa}, #{user.airticket}, #{user.diet}, #{user.istake}
+					#{user.visa}, #{user.airticket}, #{user.diet}, #{user.istake}, #{email}
 				)
 			</foreach>
 	</insert>
@@ -66,7 +66,7 @@
 			name = #{name}, phone = #{phone}, sex = #{sex}, isadult = #{isadult},
 			isjoin = #{isjoin}, areacode = #{areacode}, areaname = #{areaname}, province = #{province}, city = #{city},
 			store = #{store}, nature = #{nature}, relation = #{relation}, birthdate = #{birthdate}, age = #{age},
-			visa = #{visa}, airticket = #{airticket}, diet = #{diet}, istake = #{istake}
+			visa = #{visa}, airticket = #{airticket}, diet = #{diet}, istake = #{istake}, email = #{email}
 		WHERE
 			id = #{id}
 	</update>

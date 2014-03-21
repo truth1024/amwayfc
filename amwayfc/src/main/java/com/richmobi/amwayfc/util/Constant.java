@@ -2,18 +2,20 @@ package com.richmobi.amwayfc.util;
 
 public class Constant {
 	
-	/** 
-	* @Fields CHECKIN_WAY_QR : 二维码签到
-	*/ 
-	public static final int CHECKIN_WAY_QR = 0;
-	/** 
-	* @Fields CHECKIN_WAY_CODE : 手机或编码签到
-	*/ 
-	public static final int CHECKIN_WAY_CODE = 1;
-	/** 
-	* @Fields CHECKIN_WARY_BACKGROUD : 后台签到方式
-	*/ 
-	public static final int CHECKIN_WARY_BACKGROUD = 2;
+	public static final String SEND_EMAIL_SUCCESS_TIP = "邮件发送成功，注意查收邮件";
+	public static final String SEND_EMAIL_FAILURE_TIP = "邮件发送失败";
 	
-	public static final int CHECKIN_AUTO_SEND_SMS = 1;
+	public static final String PASSWORD_NO_EQUAL_TIP = "密码不一致";
+	public static final String PASSWORD_UPDATE_SUCCESS_TIP = "密码修改成功";
+	public static final String PASSWORD_UPDATE_FAILURE_TIP = "密码修改失败";
+	
+	public static final String AUTH_CODE_ERROR_TIP = "验证码错误";
+	public static final String LOGINCODE_PASSWORD_BLANK_TIP = "户籍编号和密码不能为空";
+	public static final String LOGINCODE_PASSWORD_ERROR_TIP = "户籍编号或密码错误";
+	public static final String LOGIN_FAILURE_TIP = "登录失败";
+	
+	
+	
+	public static final String SESSION_NAME = "login";
+	
 }

@@ -6,7 +6,7 @@
 
 	<sql id="select_login_sql_segment">
 		SELECT
-			id, logincode, isfirst,password
+			id, logincode, isfirst, password
 		FROM
 			t_login
 	</sql>
@@ -33,8 +33,8 @@
 			t_login
 		SET
 			isfirst = 2
-		<if test="passowrd != null">
-			password = #{password},md5password = #{md5password}
+		<if test="password != null">
+			,password = #{password},md5password = #{md5password}
 		</if>
 		WHERE 
 			logincode = #{logincode}

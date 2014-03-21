@@ -35,6 +35,7 @@ public class User extends AbstractDomain {
 	private String airticket;
 	private String diet;
 	private int istake;
+	private String email;
 	
 	private List<Journey> js;
 	private List<Long> cuids;
@@ -171,4 +172,11 @@ public class User extends AbstractDomain {
 	public void setCuids(List<Long> cuids) {
 		this.cuids = cuids;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

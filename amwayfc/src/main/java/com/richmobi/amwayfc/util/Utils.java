@@ -4,12 +4,35 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.Adler32;
+import java.util.zip.CRC32;
 
 import richmobi.commons.utils.MD5Util;
 
 public class Utils {
 
 	private static String phoneBasic = "((?:(?:13[0-9])|(?:15[^4,\\D])|(?:18[0,2,5-9]))\\d{8})";
+	
+	private static final char[] CHAR_TEMPLATE = new char[] { '0', '0', '0',
+		'0', '0', '0', '0', '0' };
+
+	public static String calculateCrc32(String source){
+		CRC32 crc32 = new CRC32();
+		Adler32 adler32 = new Adler32();
+		adler32.update(source.getBytes());
+		System.out.println(adler32.getValue());
+		crc32.update(source.getBytes());
+		StringBuilder builder = new StringBuilder(8);
+		System.out.println(crc32.getValue());
+		System.out.println(Long.toHexString(crc32.getValue()));
+		builder.append(Long.toHexString(crc32.getValue()));
+		if (builder.length() < 8) {
+			builder.append(CHAR_TEMPLATE, 0, 8 - builder.length());
+		}
+		System.out.println(builder.toString());
+		return builder.toString();
+	}
+	
 	/**
 	 * 
 		 * 功能: 去空白符，制表符，回车符

@@ -22,5 +22,9 @@
                 <param name="bufferSize">5024</param>
             </result>
 		</action>
+		
+		<action name="login_*" class="com.richmobi.amwayfc.action.LoginAction" method="{1}">
+			<result type="json"></result>
+		</action>
 	</package>
 </struts>
