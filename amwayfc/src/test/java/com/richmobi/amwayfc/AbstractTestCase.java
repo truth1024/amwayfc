@@ -17,7 +17,7 @@ import com.richmobi.amwayfc.domain.User;
 *  
 */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/applicationContext.xml","/applicationContext_sms_rpc.xml"})
+@ContextConfiguration(locations={"/applicationContext.xml","/applicationContext-email.xml","/applicationContext_sms_rpc.xml"})
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class AbstractTestCase {
