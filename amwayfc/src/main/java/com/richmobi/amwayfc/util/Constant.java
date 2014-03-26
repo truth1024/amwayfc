@@ -13,7 +13,7 @@ public class Constant {
 	public static final String LOGINCODE_PASSWORD_BLANK_TIP = "户籍编号和密码不能为空";
 	public static final String LOGINCODE_PASSWORD_ERROR_TIP = "户籍编号或密码错误";
 	public static final String LOGIN_FAILURE_TIP = "登录失败";
-	
+	public static final String LOGOUT_FAILURE_TIP = "退出失败";
 	
 	
 	public static final String SESSION_NAME = "login";

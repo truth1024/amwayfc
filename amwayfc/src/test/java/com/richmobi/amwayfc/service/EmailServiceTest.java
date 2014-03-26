@@ -15,7 +15,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.richmobi.amwayfc.AbstractTestCase;
-import com.truth99.util.email.EmailUtil;
 
 /** 
  * @ClassName: EmailServiceTest
@@ -46,9 +45,7 @@ public class EmailServiceTest extends AbstractTestCase{
 	 */
 	@Test
 	public void testSendEmail() throws Exception {
-//		assertEquals(true, emailService.sendEmail(user));
-		EmailUtil email = new EmailUtil();
-		email.sendEmail("xuehan.li@tendcloud.com", "主题", "内容");
+		assertEquals(true, emailService.sendEmail(user));
 	}
 
 }

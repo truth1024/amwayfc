@@ -37,6 +37,7 @@ public class LoginAction extends BasicAction {
 	private Login login;
 	private String password;
 	private String confirmPassword;
+	private int isFirst;
 	
 	@Autowired
 	EmailService emailService;
@@ -58,6 +59,7 @@ public class LoginAction extends BasicAction {
 					status = 400;
 					tip = Constant.LOGINCODE_PASSWORD_ERROR_TIP;
 				}else{
+					isFirst = login.getIsfirst();
 					//验证成功将登录信息存入session
 					request.getSession().setAttribute(Constant.SESSION_NAME, login);
 					status = 200;
@@ -73,6 +75,18 @@ public class LoginAction extends BasicAction {
 		return SUCCESS;
 	}
 	
+	public String logout(){
+		try {
+			request.getSession().removeAttribute(Constant.SESSION_NAME);
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+			tip = Constant.LOGOUT_FAILURE_TIP;
+		}
+		return SUCCESS;
+	};
+		
 	public String findPassword(){
 		User user = new User();
 		user.setEmail("truth88@qq.com");
@@ -143,5 +157,11 @@ public class LoginAction extends BasicAction {
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	public int getIsFirst() {
+		return isFirst;
+	}
+	public void setIsFirst(int isFirst) {
+		this.isFirst = isFirst;
 	}
 }

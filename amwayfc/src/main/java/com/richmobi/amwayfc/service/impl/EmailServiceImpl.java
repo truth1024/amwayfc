@@ -24,7 +24,7 @@ import richmobi.commons.utils.Configer;
 import com.richmobi.amwayfc.domain.User;
 import com.richmobi.amwayfc.persistence.UserMapper;
 import com.richmobi.amwayfc.service.EmailService;
-import com.richmobi.amwayfc.util.EmailUtil;
+import com.truth99.utils.email.EmailUtil;
 
 /** 
  * @ClassName: EmailServiceImpl
@@ -42,6 +42,8 @@ public class EmailServiceImpl implements EmailService {
 	UserMapper userMapper;
 	@Autowired
 	VelocityEngine smsVelocityEngine;
+	@Autowired
+	EmailUtil emailUtil;
 	
 	/**
 	 * @Title: sendEmail
@@ -65,9 +67,8 @@ public class EmailServiceImpl implements EmailService {
 			model.put("name", name);
 			subject = Configer.get("mail.default.subject");
 			template = Configer.get("mail.template.default.name");
-			EmailUtil email = new EmailUtil();
 			String msg = getContent(template, model);
-			email.sendEmail(user.getEmail(), subject, msg);
+			emailUtil.sendEmail(user.getEmail(), subject, msg);
 			return Boolean.TRUE;
 		} else {
 			throw new IllegalArgumentException("user cannot be null or email cannot be empty!");

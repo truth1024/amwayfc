@@ -12,7 +12,7 @@
 	</repositories>
 	<dependencies>
 		<dependency>
-			<groupId>com.truth99.util</groupId>
+			<groupId>com.truth99.utils</groupId>
 			<artifactId>email</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

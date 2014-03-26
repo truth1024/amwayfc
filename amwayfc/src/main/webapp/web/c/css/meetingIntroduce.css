@@ -1,0 +1,12 @@
+/* CSS Document */
+#meetingIntroduce ul a.meeting { color:#4f3431}
+
+.content { padding:20px 30px 0; line-height:24px; display:block; zoom:1; overflow:hidden;}
+.content span { display:block; zoom:1; overflow:hidden;}
+.content h4 { display:block; padding:20px 0 5px; font-size:14px; color:#802d05}
+.content span font { display:block; clear:both; text-indent:24px;}
+
+.operate { clear:both; display:block; padding:30px 0 10px; text-align:center}
+.operate a { background:#ff8e25; color:#fff; padding:8px 30px; zoom:1; overflow:hidden; border-radius:4px; text-decoration:none;}
+
+

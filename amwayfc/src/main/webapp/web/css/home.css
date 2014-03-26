@@ -1,0 +1,27 @@
+/* CSS Document */
+body { background:#fff;}
+
+.content { clear:both; display:block; width:950px; margin:0 auto; padding:20px 0;}
+.content .left { float:left; width:540px;}
+.content .left span { display:block; text-align:left; padding-bottom:20px;}
+.content .left font { padding:0 25px; line-height:24px; display:block; zoom:1; overflow:hidden}
+
+.content .right { float:left; padding-left:30px; width:380px; display:block;}
+.content .right ul { margin:0; padding:20px; zoom:1; border-radius:4px; background:#f4d9a8; 
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#e3b38a), color-stop(20%, #f9e5b1));
+background: -ms-linear-gradient(top, #e3b38a 0%,#f9e5b1 100%); /* IE10+ */
+background: -webkit-linear-gradient(top, #e3b38a 0%,#f9e5b1 100%); /* Chrome10+,Safari5.1+ */
+background: -moz-linear-gradient(top, rgba(227,179,138,0.6), rgba(249,229,177,1)); /* for firefox 3.6+ */
+background: -o-linear-gradient(rgba(227,179,138,0.6),rgba(249,229,177,1));  /* For Opera Browsers */}
+
+.content .right ul h4 { display:block; font-size:16px; color:#4f3431; border-bottom:1px dashed #4f3431; text-align:center; padding:5px 0 15px; margin-bottom:20px;}
+
+.content .right ul li { list-style:none; clear:both; display:block; zoom:1; overflow:hidden; padding: 10px 20px;}
+.content .right ul li .inputLogin { background:#fff; border:none; width:200px; height:28px; line-height:28px; padding:0 4px;}
+.content .right ul li span { float:left; padding:5px 5px 0 0;}
+.content .right ul li font { clear:both; display:block; padding:5px 0 0 65px; font-size:14px;}
+.content .right ul li font a.login { display:block; float:left; color:#fff; background:#ff8e25; padding:8px 45px; border-radius:4px; text-decoration:none; margin-right:10px;}
+.content .right ul li font a.forget { display:block; float:left; padding-top:7px;}
+.content .right .time { clear:both; display:block; color:#ff8d1a; padding:20px; line-height:24px;}
+
+.content .right .service { clear:both; display:block; color:#3656a5; line-height:24px; padding:0 20px;}

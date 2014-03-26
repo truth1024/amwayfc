@@ -16,7 +16,13 @@
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:config.properties" />
+<!-- 		<property name="locations" value="classpath:config.properties" /> -->
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+				<value>classpath:email_config.properties</value>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
