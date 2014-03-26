@@ -26,5 +26,10 @@
 		<action name="login_*" class="com.richmobi.amwayfc.action.LoginAction" method="{1}">
 			<result type="json"></result>
 		</action>
+		
+		<action name="user_*" class="com.richmobi.amwayfc.action.UserAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		
 	</package>
 </struts>

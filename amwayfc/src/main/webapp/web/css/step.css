@@ -15,7 +15,8 @@
 .contentMember table.grey th { background:#d4d4d4; border:1px solid #d7d7d7; color:#a7a7a7}
 .contentMember table.grey td {  border:1px solid #d7d7d7;color:#a7a7a7}
 
-.contentMember .right span { clear:both; display:block; width:400px; padding:0 10px; color:#a7a7a7}
+/*我更改的*/
+.contentMember .right span, .contentMember .left span { clear:both; display:block; width:400px; padding:0 10px; color:#a7a7a7}
 
 .explain { clear:both; display:block; text-align:center; padding-top:30px; color:#a9a9a9;}
 .operate { clear:both; display:block; padding:30px 0 10px; text-align:center}
