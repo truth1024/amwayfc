@@ -22,7 +22,7 @@ public class UserAction extends BasicAction {
 	@Autowired
 	UserService userService;
 
-	public String users(){
+	public String step2users(){
 		String logincode = getSessionLogin().getLogincode();
 		us = userService.getUsersByLogincode(logincode);
 		status = 200;

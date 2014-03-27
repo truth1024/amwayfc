@@ -6,14 +6,14 @@
 
 	<sql id="select_journey_sql_segment">
 		SELECT
-			id, title, briefinfo, start, end, infopath, num, istake, remainnum
+			id, title, briefinfo, start, end, infopath, num, istake, remainnum,duration
 		FROM
 			t_journey
 	</sql>
 	
 	<select id="getJourneysByUid" parameterType="long" resultType="journey">
 		SELECT
-			j.id, j.title, j.briefinfo, j.start, j.end, j.infopath, j.num, j.istake, j.remainnum
+			j.id, j.title, j.briefinfo, j.start, j.end, j.infopath, j.num, j.istake, j.remainnum, j.duration
 		FROM
 			t_journey AS j , t_user_journey AS uj
 		WHERE 
@@ -25,7 +25,7 @@
 	<select id="getJourneys" resultType="journey">
 		<include refid="select_journey_sql_segment"/>
 		WHERE 
-			id > 4
+			id > 5
 	</select>
 	
 	<select id="getRemainNumById" parameterType="long" resultType="int">

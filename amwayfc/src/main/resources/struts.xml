@@ -31,5 +31,9 @@
 			<result type="json"></result>
 		</action>
 		
+		<action name="journey_*" class="com.richmobi.amwayfc.action.JourneyAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		
 	</package>
 </struts>

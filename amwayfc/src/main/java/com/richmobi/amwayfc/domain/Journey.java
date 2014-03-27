@@ -29,7 +29,8 @@ public class Journey extends AbstractDomain {
 	private String infopath;
 	private int num;
 	private int istake;
-	private int remainnum;
+	private String remainnum;
+	private String duration;
 	
 	public long getId() {
 		return id;
@@ -79,10 +80,16 @@ public class Journey extends AbstractDomain {
 	public void setIstake(int istake) {
 		this.istake = istake;
 	}
-	public int getRemainnum() {
+	public String getRemainnum() {
 		return remainnum;
 	}
-	public void setRemainnum(int remainnum) {
+	public void setRemainnum(String remainnum) {
 		this.remainnum = remainnum;
+	}
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 }

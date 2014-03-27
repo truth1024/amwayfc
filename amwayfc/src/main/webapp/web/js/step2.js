@@ -5,7 +5,7 @@ $(function(){
 
 //获取用户信息函数
 function get_users(){
-	var url = url_basic+'user_users';
+	var url = url_basic+'user_step2users';
 	$.post(url,get_users_callback);
 };
 

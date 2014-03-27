@@ -1,4 +1,17 @@
 $(function(){
+	//ajax请求默认设置
+	$.ajaxSetup({
+		statusCode:{
+			404 :function(){
+				failureDialog();
+			},
+			401: function(){
+				lf('index.html');
+			}
+		},
+		dataType : 'json'
+	});
+	
 	$('#logout').on('click',function(){
 		logout();
 	});

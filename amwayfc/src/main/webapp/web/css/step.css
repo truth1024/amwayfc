@@ -37,7 +37,8 @@
 .content .chooseJourney .names ul li input { margin-right:5px;}
 
 .content .chooseJourney .names ul li i { position:absolute; left:20px; top:20px; z-index:101}
-.content .chooseJourney .names ul li .childName { position:absolute; left:0; top:27px; border:1px solid #ccc; padding:1px 10px; background:#fff; border-radius:4px; display:block; z-index:100}
+
+.content .chooseJourney .names ul li .childName { position:absolute; left:0; top:27px; border:1px solid #ccc; padding:1px 10px; background:#fff; border-radius:4px; display:none; z-index:100}
 
 .content .chooseJourney font { display:block; padding:10px 60px 0 30px; float:left; font-size:12px;}
 .content .chooseJourney span { font-weight:bold; color:#4f3431; display:block; zoom:1; overflow:hidden; font-size:14px; }
@@ -51,4 +52,11 @@
 .content .title h4 { float:left;}
 .content .title font { float:right; padding:0;}
 .content .title font a { float:left; margin-left:30px; text-decoration:underline;}
+
+.children{
+	display: none;
+}
+.show{
+	display: block!important;
+}
 
