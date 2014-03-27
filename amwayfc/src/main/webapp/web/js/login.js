@@ -40,3 +40,6 @@ function login_callback(data){
 };
 
 
+function forget_password(){
+
+};

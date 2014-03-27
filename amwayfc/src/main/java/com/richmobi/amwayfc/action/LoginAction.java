@@ -38,12 +38,13 @@ public class LoginAction extends BasicAction {
 	private String password;
 	private String confirmPassword;
 	private int isFirst;
+	private User user;
 	
 	@Autowired
 	EmailService emailService;
 	@Autowired
 	LoginService loginService;
-	
+
 	public String login(){
 		try {
 			log.debug("login : {}",login);
@@ -86,11 +87,9 @@ public class LoginAction extends BasicAction {
 		}
 		return SUCCESS;
 	};
-		
+
 	public String findPassword(){
-		User user = new User();
-		user.setEmail("truth88@qq.com");
-		user.setName("李学瀚");
+		log.debug("user : {}",user);
 		try {
 			emailService.sendEmail(user);
 			status = 200;
@@ -163,5 +162,11 @@ public class LoginAction extends BasicAction {
 	}
 	public void setIsFirst(int isFirst) {
 		this.isFirst = isFirst;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

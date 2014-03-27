@@ -12,7 +12,7 @@
 	
 	//日期格式化
 	template.helper('dateFormat2',function(date){
-		if(date != null){			
+		if(date != null){
 			date = date.replace('T' ,' ').replace(/-/g,"/");
 			return new Date(Date.parse(date)).format('yyyy-MM-dd');
 		}else{
@@ -63,17 +63,17 @@
 				<div class="chooseJourney">\
 	                <span>{j.title}<em>{if j.remainnum != null}剩余数量：{j.remainnum}{/if}{if j.title.indexOf("航海魅力") > -1}（该线路只提供18岁以上成员参与）{/if}</em></span>\
 	                <font>行程景点：{j.briefinfo}</font><font>时长：{j.duration}小时</font>\
-	                <div class="names">\
+	                <div class="names" index="{j.id}">\
 	                    <ul>\
 	                    	{each us as u}\
 	                    		{if u.isadult != 2}\
 	                        	<li>\
-	                        	<input name="21_u{j.id}_" type="checkbox" value="{u.id}" />{u.name}\
+	                        	<input index="21" name="21_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input name="21_cu{j.id}_" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="21" name="21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}\
                             		{/each}\
                             		</div>\
 	                        	{/if}\
@@ -93,12 +93,12 @@
 	                        {each us as u}\
 	                    		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input name="_21_u" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="21" name="_21_u" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input name="_21_cu" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="21" name="_21_cu" type="checkbox" value="{cu.id}" />{cu.name}\
                             		{/each}\
                             		</div>\
 	                        	{/if}\
@@ -114,7 +114,7 @@
 	template.compile('journeys22',
 			'{each js as j index}\
 			{if index > 2}\
-				<div class="chooseJourney">\
+				<div class="chooseJourney" index="{j.id}">\
 	                <span>{j.title}<em>{if j.remainnum != null}剩余数量：{j.remainnum}{/if}{if j.title.indexOf("航海魅力") > -1}（该线路只提供18岁以上成员参与）{/if}</em></span>\
 	                <font>行程景点：{j.briefinfo}</font><font>时长：{j.duration}小时</font>\
 	                <div class="names">\
@@ -122,12 +122,12 @@
 	                    	{each us as u}\
 	                    		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input name="22_u{j.id}_" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="22" name="22_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input name="22_cu{j.id}_" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="22" name="22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}\
                             		{/each}\
                             		</div>\
 	                        	{/if}\
@@ -148,12 +148,12 @@
 	                        {each us as u}\
 	                    		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input name="_22_u" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="22" name="_22_u" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input name="_22_cu" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="22" name="_22_cu" type="checkbox" value="{cu.id}" />{cu.name}\
                             		{/each}\
                             		</div>\
 	                        	{/if}\
