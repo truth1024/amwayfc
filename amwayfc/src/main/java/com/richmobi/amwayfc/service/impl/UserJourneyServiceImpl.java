@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.richmobi.amwayfc.domain.UserJourney;
+import com.richmobi.amwayfc.persistence.JourneyMapper;
 import com.richmobi.amwayfc.persistence.UserJourneyMapper;
 import com.richmobi.amwayfc.service.UserJourneyService;
 
@@ -29,6 +30,8 @@ public class UserJourneyServiceImpl implements UserJourneyService {
 
 	@Autowired
 	UserJourneyMapper userJourneyMapper;
+	@Autowired
+	JourneyMapper journeyMapper;
 	
 	/**
 	 * @Title: batchInsert

@@ -25,23 +25,26 @@
 	<select id="getJourneys" resultType="journey">
 		<include refid="select_journey_sql_segment"/>
 		WHERE 
-			id > 5
+			id > 5 and id &lt; 11
 	</select>
 	
-	<select id="getRemainNumById" parameterType="long" resultType="int">
+	<select id="getRemainNum" resultType="journey">
 		SELECT 
-			remainnum
+			id,title,remainnum
 		FROM 
 			t_journey
 		WHERE
-			id = #{id}
+			id > 5
+		AND
+		remainnum IS NOT NULL
+		FOR UPDATE
 	</select>
 	
-	<update id="updateJoinNum" parameterType="long">
+	<update id="updateJoinNum" parameterType="map">
 		UPDATE 
 			t_journey
 		SET
-			remainnum = remainnum-1
+			remainnum = remainnum+#{num}
 		WHERE
 			id = #{id}
 	</update>

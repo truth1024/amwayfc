@@ -9,7 +9,9 @@
 package com.richmobi.amwayfc.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,7 @@ import com.richmobi.amwayfc.domain.Journey;
 import com.richmobi.amwayfc.domain.User;
 import com.richmobi.amwayfc.domain.UserJourney;
 import com.richmobi.amwayfc.service.JourneyService;
+import com.richmobi.amwayfc.service.TransactionService;
 import com.richmobi.amwayfc.service.UserJourneyService;
 import com.richmobi.amwayfc.service.UserService;
 import com.richmobi.amwayfc.util.Constant;
@@ -47,6 +50,8 @@ public class JourneyAction extends BasicAction {
 	UserService userService;
 	@Autowired
 	UserJourneyService userJourneyService;
+	@Autowired
+	TransactionService transactionService;
 	
 	public String step3journeys(){
 		try {
@@ -63,11 +68,48 @@ public class JourneyAction extends BasicAction {
 	}
 	
 	public String step3insert(){
-		log.debug("ujstr : {}",ujstr);
-		String logincode = getSessionLogin().getLogincode();
-		userJourneyService.deleteByLogincode(logincode);
-		List<UserJourney> ujs = new ArrayList<UserJourney>();
-		userJourneyService.batchInsert(ujs);
+		try {
+			log.debug("ujstr : {}",ujstr);
+			String logincode = getSessionLogin().getLogincode();
+			List<UserJourney> ujs = new ArrayList<UserJourney>();
+			String[] ujarr = ujstr.split("#");
+			Map<Long,Integer> parnum = new HashMap<Long, Integer>();
+			for(String uj : ujarr){
+				String[] temparr = uj.split("_");
+				long jid = Long.parseLong(temparr[0]);
+				long uid = Long.parseLong(temparr[1]);
+				String cuids = temparr[2];
+				//成人行程
+				UserJourney aujobj = new UserJourney();
+				aujobj.setJid(jid);
+				aujobj.setUid(uid);
+				ujs.add(aujobj);
+				if(parnum.get(jid) == null){
+					parnum.put(jid,1);
+				}else{
+					parnum.put(jid, parnum.get(jid)+1);
+				}
+				//判断是否带小孩
+				String[] cuidarr = cuids.split("&");
+				for(String cuidstr : cuidarr){
+					long cuid = Long.parseLong(cuidstr);
+					if(cuid > 0){//带小孩
+						parnum.put(jid, parnum.get(jid)+1);
+						UserJourney cujobj = new UserJourney();
+						cujobj.setJid(jid);
+						cujobj.setUid(cuid);
+						cujobj.setAuid(uid);
+						ujs.add(cujobj);
+					}
+				}
+			}
+			log.debug("parnum : {}",parnum);
+			log.debug("ujs : {}",ujs);
+			tip = transactionService.insertJourney(logincode, ujs, parnum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
 		return SUCCESS;
 	}
 	

@@ -73,11 +73,11 @@ div {
 <body>
 <div id="excel_contain">
 	<h2 style="position:relative">excel导入</h2>
-	<form name="readExcel" action="/anli/excel_importExcel" method="post" enctype="multipart/form-data" onsubmit="return formCheck(this);">   
+	<form name="readExcel" action="/web/excel_importExcel" method="post" enctype="multipart/form-data" onsubmit="return formCheck(this);">   
 	    Excel文件路径:&nbsp;<input style="width:150px" type="file" name="excelFile"><br><br>
 	    <input class="submit" type="submit" value="导入">
 	</form>
-	<a class="submit" style="display:block;margin: 10px auto;font-size: 14px;" href="/anli/export">导出</a>
+	<a class="submit" style="display:block;margin: 10px auto;font-size: 14px;" href="/web/export">导出</a>
 	<div style="position: initial;top: 20px;width: 400px;margin:10px auto;">
 <!-- 		${tip} -->
 	</div>

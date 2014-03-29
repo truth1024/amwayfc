@@ -17,6 +17,7 @@
 	<typeAliases>
 		<typeAlias type="com.richmobi.amwayfc.domain.User" alias="user"/>
 		<typeAlias type="com.richmobi.amwayfc.domain.Journey" alias="journey"/>
+		<typeAlias type="com.richmobi.amwayfc.domain.UserJourney" alias="userJourney"/>
 		<typeAlias type="com.richmobi.amwayfc.domain.Login" alias="login"/>
 	</typeAliases>
 </configuration>

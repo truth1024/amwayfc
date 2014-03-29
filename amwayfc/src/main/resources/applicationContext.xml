@@ -53,7 +53,8 @@
 	<context:annotation-config />
 
 	<!-- enable transaction demarcation with annotations -->
-	<tx:annotation-driven />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+<!-- 	<tx:annotation-driven /> -->
 	
 	<aop:aspectj-autoproxy/>
 

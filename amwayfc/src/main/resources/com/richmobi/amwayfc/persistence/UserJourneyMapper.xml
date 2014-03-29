@@ -13,6 +13,18 @@
 			</foreach>
 	</insert>
 	
+	<select id="getParnumsBylogincode" parameterType="string" resultType="userJourney">
+		SELECT 
+			j.jid AS jid,COUNT(j.id) AS parnum 
+		FROM 
+			(
+				SELECT t_user_journey.* 
+				FROM t_user_journey ,t_user 
+				WHERE t_user.id = t_user_journey.uid AND t_user.logincode = #{logincode}
+			) AS j 
+		GROUP BY j.jid
+	</select>
+	
 	<select id="getUidByAuid" parameterType="long" resultType="long">
 		SELECT 
 			uid
@@ -26,7 +38,7 @@
 		DELETE FROM 
 			t_user_journey
 		WHERE
-			jid > 4 
+			jid > 5 
 		AND 
 			uid IN (SELECT id FROM t_user WHERE logincode = #{logincode})
 	</delete>
@@ -35,7 +47,7 @@
 		DELETE FROM 
 			t_user_journey
 		WHERE
-			jid > 4		
+			jid > 5		
 		AND 
 			uid = #{uid}
 	</delete>

@@ -60,25 +60,25 @@
 
 	template.compile('journeys21',
 			'{each js21 as j}\
-				<div class="chooseJourney">\
+				<div class="chooseJourney" index="{j.istake}">\
 	                <span>{j.title}<em>{if j.remainnum != null}剩余数量：{j.remainnum}{/if}{if j.title.indexOf("航海魅力") > -1}（该线路只提供18岁以上成员参与）{/if}</em></span>\
 	                <font>行程景点：{j.briefinfo}</font><font>时长：{j.duration}小时</font>\
 	                <div class="names" index="{j.id}">\
 	                    <ul>\
 	                    	{each us as u}\
-	                    		{if u.isadult != 2}\
-	                        	<li>\
-	                        	<input index="21" name="21_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
-	                        	{if u.istake == 1 && cus.length > 0}\
-	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
-                            		<div class="children childName">\
-                            		{each cus as cu }\
-                            			<input index="21" name="21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}\
-                            		{/each}\
-                            		</div>\
-	                        	{/if}\
-	                        	</li>\
-	                        	{/if}\
+                    		{if u.isadult != 2}\
+                        	<li>\
+                        	<input index="21" name="21_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
+                        	{if u.istake == 1 && cus.length > 0}\
+                        		<i class="children"><img src="images/picCorTop.png" /></i>\
+                        		<div class="children childName">\
+                        		{each cus as cu }\
+                        			<input index="21" name="21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
+                        		{/each}\
+                        		</div>\
+                        	{/if}\
+                        	</li>\
+                        	{/if}\
 	                    	{/each}\
 	                    </ul>\
 	                </div>\
@@ -86,19 +86,19 @@
 	                <div style="clear:both;"></div>\
 	            </div>\
 			{/each}\
-				<div class="chooseJourney">\
+				<div class="chooseJourney" index="1">\
 	                <span>【自行安排】<em>如选择自选行程，您将放弃当日其他自选行程</em></span>\
-	                <div class="names">\
+	                <div class="names" index="11">\
 	                    <ul>\
 	                        {each us as u}\
 	                    		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input index="21" name="_21_u" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="21" name="self_21_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input index="21" name="_21_cu" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="21" name="_21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
                             		{/each}\
                             		</div>\
 	                        	{/if}\
@@ -114,10 +114,10 @@
 	template.compile('journeys22',
 			'{each js as j index}\
 			{if index > 2}\
-				<div class="chooseJourney" index="{j.id}">\
+				<div class="chooseJourney" index="{j.istake}">\
 	                <span>{j.title}<em>{if j.remainnum != null}剩余数量：{j.remainnum}{/if}{if j.title.indexOf("航海魅力") > -1}（该线路只提供18岁以上成员参与）{/if}</em></span>\
 	                <font>行程景点：{j.briefinfo}</font><font>时长：{j.duration}小时</font>\
-	                <div class="names">\
+	                <div class="names" index="{j.id}">\
 	                    <ul>\
 	                    	{each us as u}\
 	                    		{if u.isadult != 2}\
@@ -127,7 +127,7 @@
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input index="22" name="22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="22" name="22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
                             		{/each}\
                             		</div>\
 	                        	{/if}\
@@ -141,19 +141,19 @@
 	            </div>\
 	        {/if}\
 			{/each}\
-				<div class="chooseJourney">\
+				<div class="chooseJourney" index="1">\
 	                <span>【自行安排】<em>如选择自选行程，您将放弃当日其他自选行程</em></span>\
-	                <div class="names">\
+	                <div class="names" index="12">\
 	                    <ul>\
 	                        {each us as u}\
 	                    		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input index="22" name="_22_u" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="22" name="self_22_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="images/picCorTop.png" /></i>\
                             		<div class="children childName">\
                             		{each cus as cu }\
-                            			<input index="22" name="_22_cu" type="checkbox" value="{cu.id}" />{cu.name}\
+                            			<input index="22" name="_22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
                             		{/each}\
                             		</div>\
 	                        	{/if}\

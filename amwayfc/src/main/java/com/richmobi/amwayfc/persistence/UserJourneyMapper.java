@@ -28,4 +28,6 @@ public interface UserJourneyMapper {
 	void deleteByLogincode(String logincode);
 	
 	List<Long> getUidByAuid(long auid);
+	
+	List<UserJourney> getParnumsBylogincode(String logincode);
 }

@@ -8,7 +8,9 @@
 */ 
 package com.richmobi.amwayfc.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,20 +47,6 @@ public class JourneyServiceImpl implements JourneyService {
 	}
 
 	/**
-	 * @Title: getRemainNumById
-	 * @Description:根据行程ID获取剩余人数
-	 * @param id
-	 * @return
-	 * @author Xuehan.Li
-	 * @date 2014年3月27日 上午10:10:19
-	 * @see com.richmobi.amwayfc.service.JourneyService#getRemainNumById(long)
-	 */
-	@Override
-	public int getRemainNumById(long id) {
-		return journeyMapper.getRemainNumById(id);
-	}
-
-	/**
 	 * @Title: updateJoinNum
 	 * @Description:更新剩余人数
 	 * @param id
@@ -67,8 +55,11 @@ public class JourneyServiceImpl implements JourneyService {
 	 * @see com.richmobi.amwayfc.service.JourneyService#updateJoinNum(long)
 	 */
 	@Override
-	public void updateJoinNum(long id) {
-		journeyMapper.updateJoinNum(id);
+	public void updateJoinNum(long id, int num) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id",id);
+		map.put("num", num);
+		journeyMapper.updateJoinNum(map);
 	}
 
 	/**

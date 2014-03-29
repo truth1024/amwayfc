@@ -24,6 +24,8 @@ public class UserJourney extends AbstractDomain{
 	private long jid;
 	private long auid;
 	
+	private int parnum;			//参加数
+	
 	public long getId() {
 		return id;
 	}
@@ -47,5 +49,11 @@ public class UserJourney extends AbstractDomain{
 	}
 	public void setAuid(long auid) {
 		this.auid = auid;
+	}
+	public int getParnum() {
+		return parnum;
+	}
+	public void setParnum(int parnum) {
+		this.parnum = parnum;
 	}
 }

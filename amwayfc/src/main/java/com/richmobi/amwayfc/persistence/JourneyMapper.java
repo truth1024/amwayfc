@@ -9,6 +9,7 @@
 package com.richmobi.amwayfc.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import com.richmobi.amwayfc.domain.Journey;
 
@@ -23,9 +24,9 @@ public interface JourneyMapper {
 
 	List<Journey> getJourneysByUid(long uid);
 	
-	int getRemainNumById(long id);
+	List<Journey> getRemainNum();
 	
-	void updateJoinNum(long id);
+	void updateJoinNum(Map<String,Object> map);
 	
 	List<Journey> getJourneys();
 }
