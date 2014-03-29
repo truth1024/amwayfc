@@ -1,18 +1,26 @@
 /* CSS Document */
-body { background:#fff;}
+body { background: url(../images/bgBody.png);}
 
-.content { clear:both; display:block; width:950px; margin:0 auto; padding:20px 0;}
+.line { height:14px; display:block; background:url(../images/bgHomeLine.png) left bottom repeat-x; text-indent:-9999px; width:987px; margin:0 auto;}
+
+.lineBottom { height:14px; display:block; background: url(../images/bgLineBottom.png) left bottom repeat-x; text-indent:-9999px; width:987px; margin:0 auto 20px;}
+
+
+.content { clear:both; display:block; width:961px; border-radius:4px; background:url(../images/bgHome.png) top center repeat-y; margin:0 auto; zoom:1; overflow:hidden; padding:20px 20px 30px 20px;}
 .content .left { float:left; width:540px;}
 .content .left span { display:block; text-align:left; padding-bottom:20px;}
-.content .left font { padding:0 25px; line-height:24px; display:block; zoom:1; overflow:hidden}
+.content .left font { font-size:12px; padding:0 25px; line-height:24px; display:block; zoom:1; overflow:hidden}
+.content .left p { display:block; text-align:center; color:#fda350; font-size:24px; padding:0 0 10px 25px;}
 
 .content .right { float:left; padding-left:30px; width:380px; display:block;}
-.content .right ul { margin:0; padding:20px; zoom:1; border-radius:4px; background:#f4d9a8; 
+.content .right ul { margin:0; padding:20px; zoom:1; border-radius:4px; background:#f9e5b1 url(../images/bgLogin.png) left top repeat-x; 
 background: -webkit-gradient(linear, 0 0, 0 100%, from(#e3b38a), color-stop(20%, #f9e5b1));
 background: -ms-linear-gradient(top, #e3b38a 0%,#f9e5b1 100%); /* IE10+ */
 background: -webkit-linear-gradient(top, #e3b38a 0%,#f9e5b1 100%); /* Chrome10+,Safari5.1+ */
 background: -moz-linear-gradient(top, rgba(227,179,138,0.6), rgba(249,229,177,1)); /* for firefox 3.6+ */
-background: -o-linear-gradient(rgba(227,179,138,0.6),rgba(249,229,177,1));  /* For Opera Browsers */}
+background: -o-linear-gradient(rgba(227,179,138,0.6),rgba(249,229,177,1));  /* For Opera Browsers */
+
+}
 
 .content .right ul h4 { display:block; font-size:16px; color:#4f3431; border-bottom:1px dashed #4f3431; text-align:center; padding:5px 0 15px; margin-bottom:20px;}
 
@@ -25,3 +33,4 @@ background: -o-linear-gradient(rgba(227,179,138,0.6),rgba(249,229,177,1));  /* F
 .content .right .time { clear:both; display:block; color:#ff8d1a; padding:20px; line-height:24px;}
 
 .content .right .service { clear:both; display:block; color:#3656a5; line-height:24px; padding:0 20px;}
+

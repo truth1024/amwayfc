@@ -31,17 +31,41 @@ A:active {
 }
 
 .menu { height:143px; background:url(../images/bgMenu.jpg) no-repeat top center; background-size:100% 100%;}
-.menu span { display:block; width:1003px; margin:0 auto; padding:10px 0;}
-.menu ul { clear:both; display:block; width:923px; margin:0 auto; background:rgba(255,255,255,.5); border-radius:4px; padding:0 20px; zoom:1; overflow:hidden; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80ffffff,endColorstr=#80ffffff)"; /*Filter for IE8 */    
+.menu span { display:block; width:983px; margin:0 auto; padding:10px 0;}
+.menu ul { clear:both; display:block; width:943px; margin:0 auto; background:rgba(255,255,255,.5); border-radius:4px; padding:0 10px; zoom:1; overflow:hidden; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80ffffff,endColorstr=#80ffffff)"; /*Filter for IE8 */    
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80ffffff, endColorstr=#80ffffff); /*Filter for older IEs */}
   
-.menu ul li { list-style:none; display:block; float:left; padding:5px 7px;}
-.menu ul li a { font-size:14px; padding:5px 15px; text-decoration:none; display:block; zoom:1; overflow:hidden; color:#ea570f;}
+.menu ul li { list-style:none; display:block; float:left; padding:0 4px;}
+.menu ul li a { font-size:14px; padding:10px 25px; text-decoration:none; display:block; zoom:1; overflow:hidden; color:#ea570f;}
+.menu ul li a:hover { background:#ffbf5c; border-radius:2px; color:#fff;}
 
-.mainContent { background:#fff; width:960px; margin:20px auto; border:1px solid #cbcbc9; padding-bottom:10px; border-radius:4px;}
+.mainContent { background:#fff; width:983px; margin:20px auto; border:1px solid #cbcbc9; padding-bottom:10px; border-radius:4px;}
 
-table { border:1px solid #e6dac7; border-collapse: collapse}
+table { border:1px solid #fff; border-collapse: collapse}
 th { background:#eac495}
-table td , table th { border:1px solid #e6dac7; line-height:22px; padding:5px; color:#4f3431; font-size:12px; text-align:center;}
+table td , table th { border:1px solid #fff; line-height:22px; padding:10px 5px; color:#4f3431; font-size:12px; text-align:center;}
+td { background:#feefdd}
 
 .table th, .table td  { text-align:left; padding:5px 10px;}
+
+table td a.orange {background:#FF8E25; border-radius: 4px; color: #fff; padding: 5px 15px; font-size:12px; text-decoration: none; margin:10px 0; overflow:hidden;} 
+table td a.grey {background:#9B9B9B; border-radius: 4px; color: #fff; padding: 5px 15px; font-size:12px; text-decoration: none;} 
+
+.boxTips { position:absolute; top:50%; left:50%; margin:-100px 0 0 -200px; width:400px; height:200px; background:#fff; padding:10px; border:1px solid #cbcbc9; z-index:999; border-radius:4px;}
+
+.boxTips p { display:block; text-align:right; padding-bottom:20px;}
+.boxTips p img { cursor:pointer}
+.boxTips span { display:block; line-height:24px; padding:0 20px;  height:140px}
+
+.boxTips ul { margin:0; padding:0; zoom:1}
+.boxTips ul li { list-style:none; display:block; clear:both; padding:10px 0; zoom:1; overflow:hidden}
+.boxTips ul li em { font-style:normal; float:left; width:100px; text-align:right; padding:4px 10px 0 0;}
+.boxTips ul li input { border:1px solid #ccc; width:230px; height:24px; line-height:24px; padding:0 3px; border-radius:2px}
+
+.operateTips { clear:both; display:block; }
+.operateTips a { float:right;  border-radius: 4px; color: #FFFFFF; overflow: hidden; padding: 8px 30px; text-decoration: none;}
+
+.operateTips a.confirm {  background: #FF8E25; position:absolute; right:120px; bottom:20px; } 
+.operateTips a.cancel {  background: #9b9b9b; position:absolute; right:20px; bottom:20px; } 
+
+

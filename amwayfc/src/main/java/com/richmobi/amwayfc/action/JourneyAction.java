@@ -106,6 +106,11 @@ public class JourneyAction extends BasicAction {
 			log.debug("parnum : {}",parnum);
 			log.debug("ujs : {}",ujs);
 			tip = transactionService.insertJourney(logincode, ujs, parnum);
+			if(tip.equals("success")){				
+				status = 200;
+			}else{
+				status = 400;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			status = 500;

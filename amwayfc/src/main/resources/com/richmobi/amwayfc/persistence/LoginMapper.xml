@@ -28,6 +28,12 @@
 			md5password = #{md5password}
 	</select>
 	
+	<select id="getLoginByLogincode" parameterType="string" resultType="login">
+		<include refid="select_login_sql_segment"/>
+		WHERE
+			logincode = #{logincode}
+	</select>
+	
 	<update id="update" parameterType="login">
 		UPDATE
 			t_login

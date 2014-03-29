@@ -26,4 +26,6 @@ public interface LoginService {
 	public Login getLogin(Login l);
 	
 	public void update(Login l);
+	
+	public Login getLoginByLogincode(String logincode);
 }

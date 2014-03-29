@@ -30,4 +30,6 @@ public interface UserJourneyMapper {
 	List<Long> getUidByAuid(long auid);
 	
 	List<UserJourney> getParnumsBylogincode(String logincode);
+	
+	List<UserJourney> getByLogincode(String logincode);
 }

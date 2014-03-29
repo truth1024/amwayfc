@@ -34,6 +34,12 @@
 			auid = #{auid}
 	</select>
 	
+	<select id="getByLogincode" parameterType="string" resultType="userJourney">
+		SELECT * FROM t_user_journey
+		WHERE
+			uid IN (SELECT id FROM t_user WHERE logincode = #{logincode})
+	</select>
+	
 	<delete id="deleteByLogincode" parameterType="string">
 		DELETE FROM 
 			t_user_journey

@@ -43,7 +43,7 @@ public class AuthFilter implements Filter{
 			if(requestURL.indexOf("step") < 0){
 				chain.doFilter(request, response);
 			}else{
-				if(login == null){
+				if(login == null || login.getIsfirst() == 1){
 					if (accept.indexOf("application/json") > -1) {
 						res.setStatus(401);
 					} else {

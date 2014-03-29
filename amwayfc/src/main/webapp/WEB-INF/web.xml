@@ -60,7 +60,7 @@
     <session-timeout>30</session-timeout>
   </session-config>
   <welcome-file-list>
-    <welcome-file>web/s/index.html</welcome-file>
+    <welcome-file>web/index.html</welcome-file>
   </welcome-file-list>
   <mime-mapping>
     <extension>avi</extension>

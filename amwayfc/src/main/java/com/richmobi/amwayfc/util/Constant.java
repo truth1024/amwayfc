@@ -16,7 +16,7 @@ public class Constant {
 	public static final String LOGOUT_FAILURE_TIP = "退出失败";
 	public static final String USER_GET_FAILURE_TIP = "获取用户信息失败";
 	public static final String JOURNEY_GET_FAILURE_TIP = "获取行程信息失败";
-	
+	public static final String LOGINCODE_MISTAKE_TIP = "户籍编号错误";
 	
 	public static final String SESSION_NAME = "login";
 	

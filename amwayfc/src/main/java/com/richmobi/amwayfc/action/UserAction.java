@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.richmobi.amwayfc.domain.User;
+import com.richmobi.amwayfc.domain.UserJourney;
+import com.richmobi.amwayfc.service.UserJourneyService;
 import com.richmobi.amwayfc.service.UserService;
 
 public class UserAction extends BasicAction {
@@ -18,14 +20,48 @@ public class UserAction extends BasicAction {
 	private String tip;
 	private User user;
 	private List<User> us;
+	private List<User> usFC;
+	private List<UserJourney> ujs;
 	
 	@Autowired
 	UserService userService;
-
+	@Autowired
+	UserJourneyService userJourneyService;
+	
 	public String step2users(){
-		String logincode = getSessionLogin().getLogincode();
-		us = userService.getUsersByLogincode(logincode);
-		status = 200;
+		try {
+			String logincode = getSessionLogin().getLogincode();
+			us = userService.getUsersByLogincode(logincode);
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
+		return SUCCESS;
+	}
+	
+	public String step3userJourney(){
+		try {
+			String logincode = getSessionLogin().getLogincode();
+			ujs = userJourneyService.getByLogincode(logincode);
+			log.debug("step3userJourney : {}",ujs);
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
+		return SUCCESS;
+	}
+	
+	public String step4users(){
+		try {
+			String logincode = getSessionLogin().getLogincode();
+			us = userService.getUsersByLogincode(logincode);
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
 		return SUCCESS;
 	}
 	public int getStatus() {
@@ -51,5 +87,17 @@ public class UserAction extends BasicAction {
 	}
 	public void setUs(List<User> us) {
 		this.us = us;
+	}
+	public List<UserJourney> getUjs() {
+		return ujs;
+	}
+	public void setUjs(List<UserJourney> ujs) {
+		this.ujs = ujs;
+	}
+	public List<User> getUsFC() {
+		return usFC;
+	}
+	public void setUsFC(List<User> usFC) {
+		this.usFC = usFC;
 	}
 }

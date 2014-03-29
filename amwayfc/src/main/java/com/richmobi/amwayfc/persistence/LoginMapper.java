@@ -25,6 +25,8 @@ public interface LoginMapper {
 	
 	Login getLogin(Login l);
 	
+	Login getLoginByLogincode(String logincode);
+	
 	void update(Login l);
 	
 }

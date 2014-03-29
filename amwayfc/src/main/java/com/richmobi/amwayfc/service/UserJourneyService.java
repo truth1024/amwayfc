@@ -28,4 +28,6 @@ public interface UserJourneyService {
 	public void deleteByLogincode(String logincode);
 	
 	public List<Long> getUidByAuid(long auid);
+	
+	public List<UserJourney> getByLogincode(String logincode);
 }

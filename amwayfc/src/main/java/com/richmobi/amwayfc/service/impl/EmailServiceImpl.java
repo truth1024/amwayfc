@@ -56,15 +56,16 @@ public class EmailServiceImpl implements EmailService {
 	 * @see com.richmobi.amwayfc.service.EmailService#sendEmail(com.richmobi.amwayfc.domain.User)
 	 */
 	@Override
-	public boolean sendEmail(User user) throws Exception {
+	public boolean sendEmail(User user,String password) throws Exception {
 		if(user != null && StringUtils.isNotBlank(user.getEmail())){
 			String subject = null;
 			String template = null;
 			Map<String, String> model = new HashMap<String, String>();
-			String name = user.getName();
-			log.debug("name : "+name);
+			String logincode = user.getLogincode();
+			log.debug("logincode : "+logincode);
 			model.put("domain", Configer.get("server.domain"));
-			model.put("name", name);
+			model.put("logincode", logincode);
+			model.put("password",password);
 			subject = Configer.get("mail.default.subject");
 			template = Configer.get("mail.template.default.name");
 			String msg = getContent(template, model);

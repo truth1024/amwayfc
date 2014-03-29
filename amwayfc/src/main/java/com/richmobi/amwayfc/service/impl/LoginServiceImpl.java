@@ -70,4 +70,19 @@ public class LoginServiceImpl implements LoginService {
 		loginMapper.update(l);
 	}
 
+	
+	/**
+	* @Title: getLoginByLogincode
+	* @Description:根据户籍编号获取登录信息
+	* @param logincode
+	* @return
+	* @author Xuehan.Li
+	* @date 2014年3月29日 下午11:01:47
+	* @see com.richmobi.amwayfc.service.LoginService#getLoginByLogincode(java.lang.String)
+	*/ 
+	@Override
+	public Login getLoginByLogincode(String logincode) {
+		return loginMapper.getLoginByLogincode(logincode);
+	}
+
 }

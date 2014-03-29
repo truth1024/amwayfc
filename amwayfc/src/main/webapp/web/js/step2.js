@@ -1,4 +1,9 @@
 $(function(){
+	var page = location.href.split('?')[1];
+	if(!!page){
+		$('.reelect').attr('href',page+'.html');
+		$('.reelect').prev().remove();
+	}
 	//获取登录编码下的用户信息列表
 	get_users();
 });
@@ -11,12 +16,28 @@ function get_users(){
 
 //获取用户信息回调函数
 function get_users_callback(data){
-	var status = data.status;
+	var 
+	status = data.status,
+	us = data.us,
+	arr = [],
+	j = 0
+	;
 	if(status !== 200){
 		alert(data.tip);
 	}else{
-		if(data.us != undefined && data.us.length !== 0){
-			$('.contentMember').append($(template.render('users',data)));
+		data.usFC = [];
+		for(var i = 0,len = us.length;i < len;i++){
+			if(us[i].nature === 'FC'){
+				arr[j] = i;
+				data.usFC[j] = us[i];
+				j++;
+			}
 		}
+		arr = arr.reverse();
+		for(var k in arr){
+			data.us.splice(arr[k],1);
+		}
+		$('.contentMember:eq(0)').append($(template.render('usersFC',data)));
+		$('.contentMember:eq(1)').append($(template.render('users',data)));
 	}
 };

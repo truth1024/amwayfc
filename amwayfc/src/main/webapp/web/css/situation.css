@@ -1,7 +1,7 @@
 /* CSS Document */
-#general ul a.general { color:#4f3431}
+#general ul a.general { background:#ffbf5c; border-radius:2px; color:#fff;}
 
-.content { padding:20px 160px; line-height:24px; display:block; zoom:1; overflow:hidden;}
+.content { padding:20px 60px; line-height:24px; display:block; zoom:1; overflow:hidden;}
 .content h3 { display:block; color:#802d05; font-size:18px; display:block; text-align:center;}
 .content h3 img { clear:both; margin:20px 0;}
 .content span { display:block; text-indent:24px;}

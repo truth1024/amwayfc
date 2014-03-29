@@ -86,4 +86,18 @@ public class UserJourneyServiceImpl implements UserJourneyService {
 		return userJourneyMapper.getUidByAuid(auid);
 	}
 
+	/**
+	* @Title: getByLogincode
+	* @Description:根据户籍编号获取用户行程关系
+	* @param logincode
+	* @return
+	* @author Xuehan.Li
+	* @date 2014年3月29日 下午5:08:59
+	* @see com.richmobi.amwayfc.service.UserJourneyService#getByLogincode(java.lang.String)
+	*/ 
+	@Override
+	public List<UserJourney> getByLogincode(String logincode) {
+		return userJourneyMapper.getByLogincode(logincode);
+	}
+
 }

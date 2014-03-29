@@ -10,6 +10,6 @@ public interface EmailService {
 	 * @param user
 	 * @return
 	 */
-	public boolean sendEmail(User user) throws Exception;
+	public boolean sendEmail(User user,String password) throws Exception;
 	
 }

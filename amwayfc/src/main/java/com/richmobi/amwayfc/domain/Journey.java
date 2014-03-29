@@ -31,6 +31,8 @@ public class Journey extends AbstractDomain {
 	private int istake;
 	private String remainnum;
 	private String duration;
+	private String suit;
+	private String power;
 	
 	public long getId() {
 		return id;
@@ -92,4 +94,17 @@ public class Journey extends AbstractDomain {
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
+	public String getSuit() {
+		return suit;
+	}
+	public void setSuit(String suit) {
+		this.suit = suit;
+	}
+	public String getPower() {
+		return power;
+	}
+	public void setPower(String power) {
+		this.power = power;
+	}
+	
 }

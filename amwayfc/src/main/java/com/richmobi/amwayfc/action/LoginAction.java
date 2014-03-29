@@ -90,10 +90,16 @@ public class LoginAction extends BasicAction {
 
 	public String findPassword(){
 		log.debug("user : {}",user);
+		login = loginService.getLoginByLogincode(user.getLogincode());
 		try {
-			emailService.sendEmail(user);
-			status = 200;
-			tip = Constant.SEND_EMAIL_SUCCESS_TIP;
+			if(login != null){
+				emailService.sendEmail(user,login.getPassword());
+				status = 200;
+				tip = Constant.SEND_EMAIL_SUCCESS_TIP;
+			}else{
+				status = 400;
+				tip = Constant.LOGINCODE_MISTAKE_TIP;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			status = 500;
@@ -114,6 +120,8 @@ public class LoginAction extends BasicAction {
 				login.setPassword(password);
 				login.setMd5password(Utils.MD5Encryption(password));
 				loginService.update(login);
+				login = loginService.getLogin(login);
+				request.getSession().setAttribute(Constant.SESSION_NAME,login);
 				status = 200;
 				tip = Constant.PASSWORD_UPDATE_SUCCESS_TIP;
 			}
