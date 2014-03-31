@@ -1,7 +1,6 @@
 /* CSS Document */
 #meetingIntroduce ul a.meeting { background:#ffbf5c; border-radius:2px; color:#fff;}
 
-/*我更改 加.content1*/
 .content,.content1 { padding:20px 30px 30px; line-height:24px; display:block; zoom:1; overflow:hidden;}
 .content span { display:block; zoom:1; overflow:hidden;}
 .content h4 { display:block; padding:20px 0 5px; font-size:14px; color:#802d05}

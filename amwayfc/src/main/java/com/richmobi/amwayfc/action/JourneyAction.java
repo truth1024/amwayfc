@@ -118,6 +118,18 @@ public class JourneyAction extends BasicAction {
 		return SUCCESS;
 	}
 	
+	public String step3remainnum(){
+		try {
+			js = journeyService.getRemainnum();
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
+		
+		return SUCCESS;
+	}
+	
 	public List<Journey> getJs() {
 		return js;
 	}

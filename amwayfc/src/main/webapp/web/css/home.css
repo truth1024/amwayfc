@@ -3,7 +3,7 @@ body { background: url(../images/bgBody.png);}
 
 .line { height:14px; display:block; background:url(../images/bgHomeLine.png) left bottom repeat-x; text-indent:-9999px; width:987px; margin:0 auto;}
 
-.lineBottom { height:14px; display:block; background: url(../images/bgLineBottom.png) left bottom repeat-x; text-indent:-9999px; width:987px; margin:0 auto 20px;}
+.lineBottom { height:14px; display:block; background: url(../images/bgLineBottom.png) left bottom repeat-x; text-indent:-9999px; width:987px; margin:0 auto;}
 
 
 .content { clear:both; display:block; width:961px; border-radius:4px; background:url(../images/bgHome.png) top center repeat-y; margin:0 auto; zoom:1; overflow:hidden; padding:20px 20px 30px 20px;}
@@ -33,4 +33,6 @@ background: -o-linear-gradient(rgba(227,179,138,0.6),rgba(249,229,177,1));  /* F
 .content .right .time { clear:both; display:block; color:#ff8d1a; padding:20px; line-height:24px;}
 
 .content .right .service { clear:both; display:block; color:#3656a5; line-height:24px; padding:0 20px;}
+
+.bottom { width:987px; margin:0 auto; padding-bottom:20px;}
 

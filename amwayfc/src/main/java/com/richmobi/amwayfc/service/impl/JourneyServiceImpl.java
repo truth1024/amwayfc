@@ -75,4 +75,18 @@ public class JourneyServiceImpl implements JourneyService {
 		return journeyMapper.getJourneys();
 	}
 
+
+	/**
+	* @Title: getRemainnum
+	* @Description:获取行程剩余人数
+	* @return
+	* @author Xuehan.Li
+	* @date 2014年3月30日 上午10:38:58
+	* @see com.richmobi.amwayfc.service.JourneyService#getRemainnum()
+	*/ 
+	@Override
+	public List<Journey> getRemainnum() {
+		return journeyMapper.getRemainnum();
+	}
+
 }

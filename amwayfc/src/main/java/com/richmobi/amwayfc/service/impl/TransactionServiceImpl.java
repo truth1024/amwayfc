@@ -83,7 +83,7 @@ public class TransactionServiceImpl implements TransactionService {
 				int parnum = deletenum-(numMap.get(jid) != null ? numMap.get(jid) : 0);
 				//剩余人数不够使
 				if(remainnum < -parnum){
-					throw new Exception(r.getTitle()+"剩余人数不够");
+					throw new Exception(r.getTitle());
 				}else{
 					Map<String,Object> map = new HashMap<String, Object>();
 					map.put("id",jid);

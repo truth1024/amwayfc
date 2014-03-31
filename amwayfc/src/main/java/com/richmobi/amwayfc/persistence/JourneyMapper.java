@@ -26,6 +26,8 @@ public interface JourneyMapper {
 	
 	List<Journey> getRemainNum();
 	
+	List<Journey> getRemainnum();
+	
 	void updateJoinNum(Map<String,Object> map);
 	
 	List<Journey> getJourneys();

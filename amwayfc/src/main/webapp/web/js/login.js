@@ -70,7 +70,7 @@ function update_password(){
 	par = {},
 	flag = true
 	;
-	$('.boxTips input').each(function(){
+	$('#update_password input').each(function(){
 		var 
 		$this = $(this),
 		val = $this.val(),

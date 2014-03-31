@@ -42,6 +42,17 @@
 		FOR UPDATE
 	</select>
 	
+	<select id="getRemainnum" resultType="journey">
+		SELECT 
+			id,title,remainnum
+		FROM 
+			t_journey
+		WHERE
+			id > 5
+		AND
+		remainnum IS NOT NULL
+	</select>
+	
 	<update id="updateJoinNum" parameterType="map">
 		UPDATE 
 			t_journey

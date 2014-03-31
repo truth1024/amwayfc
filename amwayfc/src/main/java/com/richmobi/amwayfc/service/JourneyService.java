@@ -26,4 +26,6 @@ public interface JourneyService {
 	public void updateJoinNum(long id, int num);
 	
 	public List<Journey> getJourneys();
+	
+	public List<Journey> getRemainnum();
 }

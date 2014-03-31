@@ -2,7 +2,8 @@ var
 people_num = {
 	'21' : {adult : 0,children : 0},
 	'22' : {adult : 0,children : 0}
-}
+},
+timer
 ;
 $(function(){
 	var page = location.href.split('?')[1];
@@ -16,13 +17,15 @@ $(function(){
 	$('body').delegate('input[name*="_u_"]','click',function(){
 		var 
 		$this = $(this),	
-		index = $this.attr('index'),							//行程ID
+		index = $this.attr('index'),							//行程日期
+		jid = undefined,										//行程ID
 		name = $this.attr('name'),
 		val = $this.val(),										//复选框值
 		checked = !!$this.attr('checked'),						//复选框是否被选中标识
 		selector_j_a = 'input[name*="'+index+'_u_'+val+'"]',	//行程成人复选框选择
 		selector_j_c = 'input[name*="'+index+'_cu_"]',			//行程小孩复选框选择
-		flag = true												//确认自行标识
+		flag = true,											//确认自行标识
+		remainnumFlag = true									//剩余人数标识
 		;
 		if(checked){	//选中
 			//判断点击的是否为自行成人复选框
@@ -30,38 +33,45 @@ $(function(){
 				var tip_info = $('.self_tip:first').text();
 				flag = confirm(tip_info);
 			}
-			if(flag){
+			jid = $this.parent().parent().parent().attr('index');
+			if($('#remainnum_'+jid).text() === '0'){
+				remainnumFlag = false;
+				alert('该自选行程名额已满，请您改选其他精彩行程！');
+			}
+			if(flag && remainnumFlag){
 				$(selector_j_a).attr('disabled',true);
 				$this.attr('disabled',false);
 				$this.siblings('.children').addClass('show');
 				change_people_num(index,'adult',-1);
 			}else{
-				return flag;
+				return flag && remainnumFlag;
 			}
 		}else{			//未选中
 			$(selector_j_a).attr('disabled',false);
 			
 			var 
-			$cinput = $this.parent().children('div').children(selector_j_c+':checked'),
+			$cinput = $this.parent().children('div').children('div').children(selector_j_c+':checked'),
 			len = $cinput.length 		//该成人下选择的小孩数
 			;
 			if(len > 0){
 				change_people_num(index,'children',len);
 				$cinput.each(function(){
 					$(selector_j_c+'[value="'+$(this).val()+'"]').attr('disabled',false);
+					$(selector_j_c+'[value="'+$(this).val()+'"]').parent().show();
 				});
 			}
-			$this.siblings('div').children(selector_j_c).attr('checked',false);
+			$this.siblings('div').children('div').children(selector_j_c).attr('checked',false);
 			$this.siblings('.children').removeClass('show');
 			change_people_num(index,'adult',1);
 		}
+		render_children_show();
 	});
 
 	//小孩复选框点击事件
 	$('body').delegate('input[name*="_cu_"]','click',function(){
 		var 
 		$this = $(this),	
-		index = $this.attr('index'),							//行程ID
+		index = $this.attr('index'),							//行程日期
 		val = $this.val(),										//复选框值
 		checked = !!$this.attr('checked'),						//复选框是否被选中标识
 		selector_j_c = 'input[name*="'+index+'_cu_'+val+'"]',	//行程小孩复选框选择
@@ -69,19 +79,23 @@ $(function(){
 		;
 		flag = $this.parent().parent().parent().
 			parent().parent().parent().parent().
-			parent().parent().attr('index') == 1 ? true : false;
+			parent().parent().parent().attr('index') == 1 ? true : false;
 		if(flag){
 			if(checked){	//选中
 				//其他小孩复选框置灰
 				$(selector_j_c).attr('disabled',true);
+				$(selector_j_c).parent().hide();
 				$this.attr('disabled',false);
+				$this.parent().show();
 				change_people_num(index,'children',-1);
 			}else{			//未选中
 				$(selector_j_c).attr('disabled',false);
+				$(selector_j_c).parent().show();
 				change_people_num(index,'children',1);
 			}
+			render_children_show();
 		}else{
-			alert($('#j_remind').text());
+			alert('“激情.马赛—航海魅力”线路消耗体力较大，出于健康考量，只针对18岁以上，60岁以下的家属开放。');
 			return flag;
 		}
 	});
@@ -133,6 +147,7 @@ function render_callback(data){
 		$(template.render('journeys21',data)).insertAfter('#journey_21');
 		$(template.render('journeys22',data)).insertAfter('#journey_22');
 		get_user_journey();
+		timing_get_remiannum();
 	}
 };
 
@@ -178,7 +193,33 @@ function get_user_journey_callback(data){
 			});
 			people_num['21'].adult = people_num['21'].children =
 			people_num['22'].adult = people_num['22'].children = 0;
+			checked_children_show();
 		}
+	}
+};
+
+//定时获取剩余人数函数
+function timing_get_remiannum(){
+	var 
+	url = url_basic+'journey_step3remainnum'
+	time = 1000*60*1
+	;
+
+	timer = setInterval(function(){
+		$.post(url,timing_get_remiannum_callback);	
+	},time);
+	
+};
+
+//定时获取剩余人数回调函数
+function timing_get_remiannum_callback(data){
+	var 
+	status = data.status
+	;
+	if(status === 200){
+		$.each(data.js,function(i,v){
+			$('#remainnum_'+v.id).text(v.remainnum);
+		});
 	}
 };
 
@@ -221,7 +262,7 @@ function submit_callback(data){
 	status = data.status
 	;
 	if(status !== 200){
-		alert(data.tip);
+		alert(data.tip+'行程名额已满，请您改选其他精彩行程！');
 	}else{
 		lf('step04.html');
 	}
@@ -254,7 +295,7 @@ function splice_jid_uid_cid(){
 		
 		$input.each(function(){
 			uidstr = jid+'_'+$(this).val()+'_';
-			var $cinput = $(this).parent().children('div').children('input:checked');
+			var $cinput = $(this).parent().children('div').children('div').children('input:checked');
 			if($cinput.length == 0){
 				cuidstr = '0&';
 				ujstr += uidstr+cuidstr;
@@ -278,4 +319,45 @@ function get_date_by_jid(jid){
 	}else{
 		return '22';
 	}
-}
+};
+
+//被选中的小孩列表显示（初始化时使用）
+function checked_children_show(){
+	$('div.children').each(function(index){
+		var flag = true;
+		$(this).children('div').children('input').each(function(){
+			if(!!$(this).attr('checked')){
+				var index = $(this).attr('index');
+				var val = $(this).val();
+				flag = false;
+				$('input[name*="'+index+'_cu_'+val+'"]').parent().hide();
+				$(this).parent().show();
+			}
+		});
+		if(flag){
+			$(this).removeClass('show');
+			$(this).prev().removeClass('show');
+		}
+	});
+};
+
+function render_children_show(){
+	$('div.children').each(function(index){
+		var flag = true;
+		$(this).children('div').each(function(){
+			if($(this).css('display') === 'block'){
+				flag = false;
+				return flag;
+			}
+		});
+		if(flag){
+			$(this).removeClass('show');
+			$(this).prev().removeClass('show');
+		}else{
+			if(!!$(this).prevAll('input').attr('checked')){
+				$(this).addClass('show');
+				$(this).prev().addClass('show');
+			}
+		}
+	});
+};

@@ -131,7 +131,7 @@
 		            <td>{j.duration}小时</td>\
 		            <td>{j.suit}</td>\
 		            <td>{j.power}</td>\
-		            <td>{j.remainnum == null ? "无" : j.remainnum}</td>\
+		            <td id="remainnum_{j.id}">{j.remainnum == null ? "无" : j.remainnum}</td>\
 		            <td><a href="{j.infopath}" target="_blank">查看详情</a></td>\
 		    	</tr>\
 	          	<tr>\
@@ -148,7 +148,7 @@
 	                        		<div class="children childName">\
 	                        			随行子女<br />\
 	                        		{each cus as cu }\
-	                        			<input index="21" name="21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
+	                        			<div><input index="21" name="21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}</div>\
 	                        		{/each}\
 	                        		</div>\
 	                        	{/if}\
@@ -181,7 +181,7 @@
 	                        		<div class="children childName">\
 	                        			随行子女<br />\
 	                        		{each cus as cu }\
-	                        			<input index="21" name="_21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
+	                        			<div><input index="21" name="_21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}</div>\
 	                        		{/each}\
 	                        		</div>\
 	                        	{/if}\
@@ -235,7 +235,7 @@
 	                        		<div class="children childName">\
 	                        			随行子女<br />\
 	                        		{each cus as cu }\
-	                        			<input index="22" name="22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
+	                        			<div><input index="22" name="22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}</div>\
 	                        		{/each}\
 	                        		</div>\
 	                        	{/if}\
@@ -269,7 +269,7 @@
 	                        		<div class="children childName">\
 	                        			随行子女<br />\
 	                        		{each cus as cu }\
-	                        			<input index="22" name="_22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}<br>\
+	                        			<div><input index="22" name="_22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}</div>\
 	                        		{/each}\
 	                        		</div>\
 	                        	{/if}\
