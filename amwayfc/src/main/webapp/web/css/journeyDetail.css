@@ -1,0 +1,28 @@
+/* CSS Document */
+/*#journeyIntroduce ul a.introduce { color:#4f3431}
+*/
+.containDetail  { background:#fff; width:983px; margin:20px auto; border:1px solid #cbcbc9; border-radius:4px;}
+
+.content { padding:10px 0 0 10px; line-height:24px; display:block; zoom:1; overflow:hidden;}
+
+.content h4 { display:block; color:#802d05; font-size:14px; margin-bottom:10px; cursor:pointer} 
+
+.introduceWords { clear:both; display:block; zoom:1; overflow:hidden; }
+.introduceWords ul { margin:0; padding:0 15px 0 30px;}
+
+.introduceWords h4 { display:block; padding-top:20px;}
+.introduceWords h5 { display:block; font-size:12px; padding:5px 10px; }
+.introduceWords h5.orange { color:#FF8E25}
+.introduceWords ol { margin:0; padding:0 15px 10px 34px;}
+.introduceWords ol li { list-style: circle}
+
+.picIntroduce { clear:both; display:block; zoom:1; overflow:hidden; padding:6px 15px 10px 18px;}
+.picIntroduce .left { float:left; width:500px; word-break:normal; padding:10px 30px 0 0;}
+.picIntroduce .right { float:left;}
+.picIntroduce span { display:block; padding-bottom:10px;}
+.picIntroduce span em { display:block; text-align:center; padding-bottom:10px;}
+
+.picIntroduce ul span { padding-left:24px;}
+.introduceWords ul strong { display:block; font-size:13px; padding:6px 0; color:#7e5208}
+
+.closeNice, .closeCannes, .closeAvignon, .closeMarseille, .closeBarcelona { display:block; text-align:center; background:#efefef; color:#783c36; margin:10px 0; border-radius:4px; cursor:pointer;}
