@@ -32,10 +32,10 @@ A:active {
 
 .menu { height:143px; background:url(../images/bgMenu.jpg) no-repeat top center; background-size:100% 100%;}
 .menu span { display:block; width:983px; margin:0 auto; padding:10px 0;}
-.menu ul { clear:both; display:block; width:943px; margin:0 auto; background:rgba(255,255,255,.5); border-radius:4px; padding:0 10px; zoom:1; overflow:hidden; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80ffffff,endColorstr=#80ffffff)"; /*Filter for IE8 */    
+.menu ul { clear:both; display:block; width:933px; margin:0 auto; background:rgba(255,255,255,.5); border-radius:4px; padding:0 20px; zoom:1; overflow:hidden; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80ffffff,endColorstr=#80ffffff)"; /*Filter for IE8 */    
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80ffffff, endColorstr=#80ffffff); /*Filter for older IEs */}
   
-.menu ul li { list-style:none; display:block; float:left; padding:0 4px;}
+.menu ul li { list-style:none; display:block; float:left; padding:0 12px;}
 .menu ul li a { font-size:14px; padding:10px 25px; text-decoration:none; display:block; zoom:1; overflow:hidden; color:#ea570f;}
 .menu ul li a:hover { background:#ffbf5c; border-radius:2px; color:#fff;}
 

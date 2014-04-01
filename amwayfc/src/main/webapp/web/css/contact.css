@@ -1,0 +1,6 @@
+/* CSS Document */
+#contact ul a.contact { background:#ffbf5c; border-radius:2px; color:#fff;}
+
+.content { display:block; zoom:1; overflow:hidden; height:500px; padding:30px 30px 30px 120px; }
+.content ul { display:block; padding-top:100px;background:url(../images/picContact.jpg) no-repeat right bottom; height:300px; width:850px;}
+.content span { display:block; zoom:1; overflow:hidden; font-size:14px; padding:6px 0}
