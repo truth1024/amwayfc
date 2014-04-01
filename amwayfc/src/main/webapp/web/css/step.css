@@ -9,27 +9,27 @@
 .contentMember .table th { text-align:center}
 .contentMember .table td { padding-left:20px;}
 .contentMember .table { margin-bottom:20px;}
-.contentMember .left { float:left; clear:both; height:400px; }
-.contentMember .right { float:right;  height:400px;}
+.contentMember .left { float:left; clear:both; height:460px; }
+.contentMember .right { float:right;  height:460px;}
 
 .contentMember table.grey th { background:#d4d4d4; border:1px solid #d7d7d7; color:#a7a7a7}
 .contentMember table.grey td {  border:1px solid #d7d7d7;color:#a7a7a7; background:#eaeaea}
 
-.contentMember span.tips { clear:both; font-size:12px; display:block; width:400px; padding:0 10px; color:#a7a7a7}
+.contentMember span.tips { clear:both; font-size:14px; display:block; width:400px; padding:0 10px; color:#a7a7a7}
 
 .explain { clear:both; display:block; text-align:center; padding-top:30px; color:#ff8d00; font-size:13px}
 .operate { clear:both; display:block; padding:30px 0 10px; text-align:center}
 .operate a { background:#ff8e25; color:#fff; padding:8px 30px; zoom:1; overflow:hidden; border-radius:4px; text-decoration:none;}
 .operate a.reelect { background:#9b9b9b; color:#fff; padding:8px 20px; zoom:1; overflow:hidden; border-radius:4px; text-decoration:none; margin-left:15px;}
 
-.contentStep h2 { display:block; zoom:1; overflow:hidden; background:#eac495; padding:6px 20px; margin-bottom:20px; font-size:12px;}
+.contentStep h2 { display:block; zoom:1; overflow:hidden; background:#eac495; padding:6px 20px; margin-bottom:20px; font-size:14px;}
 .contentStep h2 font { float:left; padding:0; font-size:14px;}
 
-.contentStep h5 { display:block; zoom:1; overflow:hidden; background:#eac495; padding:6px 20px; margin-bottom:20px; font-size:12px;}
-.contentStep h5 font { float:left; padding:0; font-size:12px;}
+.contentStep h5 { display:block; zoom:1; overflow:hidden; background:#eac495; padding:6px 20px; margin-bottom:20px; font-size:14px;}
+.contentStep h5 font { float:left; padding:0; font-size:14px;}
 
 
-.contentStep font { clear:both; display:block; padding:10px 20px 30px; font-size:12px;}
+.contentStep font { clear:both; display:block; padding:10px 20px 30px; font-size:14px;}
 .contentStep span { clear:both; color:#4f3431; display:block; zoom:1; overflow:hidden; font-size:14px; padding:10px 20px 0;}
 
 .contentStep .chooseJourney { display:block; margin-bottom:30px; border-bottom:1px dashed #ccc; padding-bottom:10px;}
@@ -44,9 +44,9 @@
 /* 我更改：删除display:block; */
 .contentStep .chooseJourney .names ul li .childName { font-size:12px; position:absolute; left:0; top:27px; border:1px solid #ccc; padding:4px 10px; background:#fff; border-radius:4px;  z-index:100; text-align:left}
 
-.contentStep .chooseJourney font { display:block; padding:10px 60px 0 30px; float:left; font-size:12px;}
+.contentStep .chooseJourney font { display:block; padding:10px 60px 0 30px; float:left; font-size:14px;}
 .contentStep .chooseJourney span { font-weight:bold; color:#4f3431; display:block; zoom:1; overflow:hidden; font-size:14px; padding: 0 }
-.contentStep .chooseJourney span em { font-size:12px; font-weight:normal; font-style:normal; color:#fff; padding-left:30px;}
+.contentStep .chooseJourney span em { font-size:14px; font-weight:normal; font-style:normal; color:#fff; padding-left:30px;}
 
 .remind { color:#FF8D00}
 
@@ -57,15 +57,15 @@
 .contentStep .title { clear:both; display:block; zoom:1; overflow:hidden}
 .contentStep .title h4 { float:left; display:block;}
 .contentStep .title strong { float:right; padding-bottom:15px; display:block; font-weight:normal;}
-.contentStep .title strong a { float:left; color:#fff; font-size:12px; margin-left:10px; text-decoration:none; background:#FF8E25; padding:2px 20px; border-radius:4px;}
+.contentStep .title strong a { float:left; color:#fff; font-size:14px; margin-left:10px; text-decoration:none; background:#FF8E25; padding:2px 20px; border-radius:4px;}
 .contentStep .title strong a:hover { text-decoration:none;}
 
 
 
 
 .tableTravel { border:1px solid #e6dac7; border-collapse: collapse; margin-bottom:30px;}
-.tableTravel th { background:#ffecd4; border:1px solid #fff; line-height:22px; padding:5px; color:#4f3431; font-size:12px; text-align:center;}
-.tableTravel td { border:1px solid #fff; line-height:22px; padding:12px 5px; color:#4f3431; font-size:12px; text-align:center;}
+.tableTravel th { background:#ffecd4; border:1px solid #fff; line-height:22px; padding:5px; color:#4f3431; font-size:14px; text-align:center;}
+.tableTravel td { border:1px solid #fff; line-height:22px; padding:12px 5px; color:#4f3431; font-size:14px; text-align:center;}
 
 .table01 th { background:#e19e4d; color:#fff;}
 .table01 td { background:#fbb766}

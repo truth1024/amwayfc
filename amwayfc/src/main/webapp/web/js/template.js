@@ -97,9 +97,8 @@
               	<tr><th scope="col" colspan="2">{u.name}</th></tr>\
               	<tr><td width="100" bgcolor="#efefef">日期</td><td bgcolor="#efefef">行程</td></tr>\
               	<tr><td>7月18日</td><td>法国尼斯</td></tr>\
-              	<tr><td>7月19日</td><td>法国戛纳</td></tr>\
-              	<tr><td>&nbsp;</td><td>摩纳哥公园</td></tr>\
-              	<tr><td>7月20日</td><td>法国马赛</td></tr>\
+              	<tr><td>7月19日</td><td>法国漫步戛纳</td></tr>\
+              	<tr><td>7月20日</td><td>法国恋恋薰衣草</td></tr>\
           	{each u.js as j}\
               	<tr><td>{dateFormat j.start}</td><td>{j.title}</td></tr>\
         	{/each}\
@@ -113,7 +112,7 @@
 		'{each js21 as j }\
 		<div class="chooseJourney" index="{j.istake}">\
 		{if j.istake == 2}\
-			<div id="j_remind" class="remind">“航海魅力”行程耗费体力较大，建议18-60岁以上人员选择。</div>\
+			<div id="j_remind" class="remind">“激情.马赛—航海魅力”线路消耗体力较大，出于健康考量，只面向18岁以上，60岁以下的家属开放。</div>\
 		{/if}\
             <table width="924" border="0" cellspacing="0" cellpadding="0" class="tableTravel table01">\
 	          	<tr>\
@@ -163,39 +162,7 @@
         	</table>\
             <div style="clear:both;"></div>\
         </div>\
-		{/each}\
-		<div class="chooseJourney" index="1">\
-        	<table width="924" border="0" cellspacing="0" cellpadding="0" class="tableTravel table01">\
-              	<tr><th scope="col"><span style="float:left; color:#fff;">【自行安排】<em class="self_tip">如选择自行安排，您将放弃当日其他自选行程</em></span></th></tr>\
-              	<tr>\
-                	<td >\
-	                   	<div class="names" index="11">\
-		                    <font>请选择出行人员：</font>\
-		                    <ul>\
-		                    {each us as u}\
-                    		{if u.isadult != 2}\
-	                        	<li>\
-	                        		<input index="21" name="self_21_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
-	                        	{if u.istake == 1 && cus.length > 0}\
-	                        		<i class="children"><img src="/web/images/picCorTop.png" /></i>\
-	                        		<div class="children childName">\
-	                        			随行子女<br />\
-	                        		{each cus as cu }\
-	                        			<div><input index="21" name="_21_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}</div>\
-	                        		{/each}\
-	                        		</div>\
-	                        	{/if}\
-	                        	</li>\
-                        	{/if}\
-	                    	{/each}\
-		                    </ul>\
-		                    <div style="clear:both"></div>\
-	                	</div>\
-                	</td>\
-              	</tr>\
-            </table>\
-        	<div style="clear:both;"></div>\
-    	</div>'
+		{/each}'
 	);
 
 	template.compile('journeys22',
@@ -251,39 +218,7 @@
             <div style="clear:both;"></div>\
         </div>\
         {/if}\
-		{/each}\
-		<div class="chooseJourney"  index="1">\
-        	<table width="924" border="0" cellspacing="0" cellpadding="0" class="tableTravel table02">\
-              	<tr><th scope="col"><span style="float:left;">【自行安排】<em class="self_tip" style="color:#FF8D00">如选择自行安排，您将放弃当日其他自选行程</em></span></th></tr>\
-              	<tr>\
-                	<td >\
-	                   	<div class="names" index="12">\
-		                    <font>请选择出行人员：</font>\
-		                    <ul>\
-		                    {each us as u}\
-                    		{if u.isadult != 2}\
-	                        	<li>\
-	                        		<input index="22" name="self_22_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
-	                        	{if u.istake == 1 && cus.length > 0}\
-	                        		<i class="children"><img src="/web/images/picCorTop.png" /></i>\
-	                        		<div class="children childName">\
-	                        			随行子女<br />\
-	                        		{each cus as cu }\
-	                        			<div><input index="22" name="_22_cu_{cu.id}" type="checkbox" value="{cu.id}" />{cu.name}</div>\
-	                        		{/each}\
-	                        		</div>\
-	                        	{/if}\
-	                        	</li>\
-                        	{/if}\
-	                    	{/each}\
-		                    </ul>\
-		                    <div style="clear:both"></div>\
-	                	</div>\
-                	</td>\
-              	</tr>\
-            </table>\
-        	<div style="clear:both;"></div>\
-    	</div>'
+		{/each}'
 	);
 
 })();

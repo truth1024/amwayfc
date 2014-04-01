@@ -95,7 +95,7 @@ $(function(){
 			}
 			render_children_show();
 		}else{
-			alert('“激情.马赛—航海魅力”线路消耗体力较大，出于健康考量，只针对18岁以上，60岁以下的家属开放。');
+			alert('“激情.马赛—航海魅力”线路消耗体力较大，出于健康考量，只面向18岁以上，60岁以下的家属开放。');
 			return flag;
 		}
 	});
@@ -241,7 +241,7 @@ function submit(){
 		}
 		if(people_num[key].children != 0){
 			flag = false;
-			tip = '选择不完全,请仔细检查';
+			tip = '出于安全考量，18岁以下的未成年家属须同至少一位父母选择同一行程。';
 			break;
 		}
 	}

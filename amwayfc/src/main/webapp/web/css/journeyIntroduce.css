@@ -3,13 +3,13 @@
 */
 .content { padding:20px 0; line-height:24px; display:block; zoom:1; overflow:hidden;}
 
-.content h4 { display:block; color:#802d05; font-size:14px; margin-bottom:10px;} 
+.content h4 { display:block; color:#802d05; font-size:16px; margin-bottom:10px;} 
 
 .introduceWords { clear:both; display:block; zoom:1; overflow:hidden; }
 .introduceWords ul { margin:0; padding:0 15px 0 30px;}
 
 .introduceWords h4 { display:block; padding-top:20px;}
-.introduceWords h5 { display:block; font-size:12px; padding:5px 10px; }
+.introduceWords h5 { display:block; font-size:14px; padding:5px 10px; }
 .introduceWords ol { margin:0; padding:0 15px 10px 34px;}
 .introduceWords ol li { list-style: circle}
 
@@ -23,3 +23,5 @@
 .introduceWords ul strong { display:block; font-size:13px; padding:6px 0; color:#7e5208}
 
 .closeNice, .closeCannes, .closeAvignon, .closeMarseille, .closeBarcelona { display:block; text-align:center; background:#efefef; color:#783c36; margin:10px 0; border-radius:4px; cursor:pointer;}
+
+
