@@ -44,7 +44,7 @@
 	
 	<select id="getRemainnum" resultType="journey">
 		SELECT 
-			id,title,remainnum
+			id,title,remainnum,num
 		FROM 
 			t_journey
 		WHERE

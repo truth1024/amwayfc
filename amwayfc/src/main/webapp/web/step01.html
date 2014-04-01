@@ -11,11 +11,7 @@
 <script type="text/javascript" src="/web/js/variable.js"></script>
 <script type="text/javascript" src="/web/js/utils.js"></script>
 <script type="text/javascript" src="/web/js/main.js"></script>
-<script type="text/javascript">
-    function dis(num){
-        $('.content').hide().eq(num).show();
-    };
-</script>
+<script type="text/javascript" src="/web/js/step1.js"></script>
 </head>
 
 <body id="step">
@@ -24,7 +20,6 @@
     <ul>
    	  <li><a href="/web/step01.html" class="home">在线注册</a></li>
         <li><a href="/web/meetingIntroduce.html" class="meeting">研讨会介绍</a></li>
-        <li><a href="/web/policy.html" class="policy">政策细则</a></li>
         <li><a href="/web/generalSituation.html" class="general">邮轮概况</a></li>
         <li><a href="/web/travel.html" class="travel">旅游小贴士</a></li>
         <li><a href="/web/guide.html" class="guide">操作指南</a></li>
@@ -46,35 +41,35 @@
   <tr>
     <td>1</td>
     <td>2014.07.18周五</td>
-    <td><a href="#">蔚蓝假期.启航</a></td>
+    <td><a href="javascript:dis(0);">蔚蓝假期.启航</a></td>
     <td>尼斯</td>
     <td>邮轮</td>
   </tr>
   <tr>
     <td>2</td>
     <td>2014.07.19周六</td>
-    <td><a href="#" >漫步戛纳</a></td>
+    <td><a href="javascript:dis(1);" >漫步戛纳</a></td>
     <td>戛纳</td>
     <td>邮轮</td>
   </tr>
   <tr>
     <td>3</td>
     <td>2014.07.20周日</td>
-    <td><a href="#" >恋恋薰衣草</a></td>
+    <td><a href="javascript:dis(2);" >恋恋薰衣草</a></td>
     <td>马赛</td>
     <td>邮轮</td>
   </tr>
   <tr>
     <td>4</td>
     <td>2014.07.21周一</td>
-    <td><a href="#" class="orange" style="padding:5px 27px;">马赛自选行程</a></td>
+    <td><a href="javascript:dis(3);" class="orange" style="padding:5px 27px;">马赛自选行程</a></td>
     <td>马赛</td>
     <td>邮轮</td>
   </tr>
   <tr>
     <td>5</td>
     <td>2014.07.22周二</td>
-    <td><a href="#" class="orange">巴塞罗那自选行程</a></td>
+    <td><a href="javascript:dis(4);" class="orange">巴塞罗那自选行程</a></td>
     <td>巴塞罗那</td>
     <td>巴塞罗那迪尔哥诺玛酒店</td>
     
@@ -82,13 +77,13 @@
   <tr>
     <td>6</td>
     <td>2014.07.23周三</td>
-    <td><a href="#">返程</a></td>
+    <td><a href="javascript:dis(5);">返程</a></td>
     <td>巴塞罗那</td>
     <td>&nbsp;</td>
   </tr>
 </table>
 
-		<div class="content" style="display:none;">
+	<div class="content" style="display:none;">
         <h4> 蔚蓝假期——尼斯（Nice）</h4>
         <div class="introduceWords">
             <h5>尼斯(Nice)的简介:</h5>
@@ -203,7 +198,7 @@
             </ol>
             <h5>马赛自选行程</h5>
             <ol>
-            <table width="850" border="0" cellspacing="0" cellpadding="0">
+            <table id="" width="850" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <th scope="col">行程名称</th>
                 <th scope="col">行程景点</th>
@@ -211,25 +206,25 @@
                 <th scope="col">剩余名额</th>
                 <th scope="col">查看详细介绍</th>
               </tr>
-              <tr>
-                <td>经典·马赛-探寻圣地（人数上限：130 人）</td>
+              <tr id="journey_6">
+                <td>经典·马赛-探寻圣地（人数上限：<em style="font-style:normal;"></em> 人）</td>
                 <td>圣母加德大教堂-隆尚宫-欧洲和地中海文明博物馆</td>
                 <td>★★★</td>
-                <td>80</td>
+                <td></td>
                 <td>无</td>
               </tr>
-              <tr>
-                <td>恬静·马赛-峡湾悠荡（人数上限：130 人）</td>
+              <tr id="journey_7">
+                <td>恬静·马赛-峡湾悠荡（人数上限：<em style="font-style:normal;"></em> 人）</td>
                 <td>卡西斯-卡朗格峡湾</td>
                 <td>★★★</td>
-                <td>78</td>
+                <td></td>
                 <td>无</td>
               </tr>
-              <tr>
-                <td>激情·马赛-航海魅力（人数上限：54 人）</td>
+              <tr id="journey_8">
+                <td>激情·马赛-航海魅力（人数上限：<em style="font-style:normal;"></em> 人）</td>
                 <td>扬帆出海-伊夫堡</td>
                 <td>★★★★★</td>
-                <td>6</td>
+                <td></td>
                 <td>无</td>
               </tr>
             </table>
@@ -269,7 +264,6 @@
             </div>
         </div>
     </div>
-
 
   	<div class="content" style="display:none;">
         <h4 class="titleBS">加泰罗尼亚之心——巴塞罗那（Barcelona）</h4>
