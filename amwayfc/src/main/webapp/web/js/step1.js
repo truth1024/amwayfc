@@ -26,4 +26,5 @@
 //显示对应的行程详情
  function dis(num){
     $('.dis').hide().eq(num).show();
+    location.href= "#"+num;
 };
