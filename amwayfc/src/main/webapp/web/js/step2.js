@@ -1,8 +1,10 @@
 $(function(){
 	var page = location.href.split('?')[1];
 	if(!!page){
-		$('.reelect').attr('href',page+'.html');
-		$('.reelect').prev().remove();
+//		$('.reelect').attr('href',page+'.html');
+//		$('.reelect').prev().remove();
+		$('.operate a').attr('href',page+'.html');
+		$('.operate a').text('返回');
 	}
 	//获取登录编码下的用户信息列表
 	get_users();
