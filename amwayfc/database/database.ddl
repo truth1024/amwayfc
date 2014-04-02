@@ -43,6 +43,9 @@ INSERT INTO `t_journey` VALUES ('10', '华彩·巴塞罗那', '【蒙追山】--
 INSERT INTO `t_journey` VALUES ('11', '自由.马赛 —— 畅享邮轮', '', '2014-07-21 00:00:00', null, null, null, '1', null, null, null, null);
 INSERT INTO `t_journey` VALUES ('12', '自行安排', null, '2014-07-22 00:00:00', null, null, null, '1', null, null, null, null);
 
+update t_journey set remainnum = remainnum-20,num = num-20 where id = 6;
+update t_journey set remainnum = remainnum-10,num = num-10 where id = 7;
+update t_journey set remainnum = remainnum-24,num = num-24 where id = 8;
 -- ----------------------------
 -- Table structure for `t_login`
 -- ----------------------------

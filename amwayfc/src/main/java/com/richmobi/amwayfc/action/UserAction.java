@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.richmobi.amwayfc.domain.Login;
 import com.richmobi.amwayfc.domain.User;
 import com.richmobi.amwayfc.domain.UserJourney;
 import com.richmobi.amwayfc.service.UserJourneyService;
@@ -22,6 +23,7 @@ public class UserAction extends BasicAction {
 	private List<User> us;
 	private List<User> usFC;
 	private List<UserJourney> ujs;
+	private int isfirst;
 	
 	@Autowired
 	UserService userService;
@@ -55,7 +57,9 @@ public class UserAction extends BasicAction {
 	
 	public String step4users(){
 		try {
-			String logincode = getSessionLogin().getLogincode();
+			Login l = getSessionLogin();
+			String logincode = l.getLogincode();
+			isfirst = l.getIsfirst();
 			us = userService.getUsersByLogincode(logincode);
 			status = 200;
 		} catch (Exception e) {
@@ -64,6 +68,7 @@ public class UserAction extends BasicAction {
 		}
 		return SUCCESS;
 	}
+	
 	public int getStatus() {
 		return status;
 	}
@@ -99,5 +104,11 @@ public class UserAction extends BasicAction {
 	}
 	public void setUsFC(List<User> usFC) {
 		this.usFC = usFC;
+	}
+	public int getIsfirst() {
+		return isfirst;
+	}
+	public void setIsfirst(int isfirst) {
+		this.isfirst = isfirst;
 	}
 }

@@ -23,6 +23,13 @@
 //	}
 //};
 
+$(function(){
+	$(window).manhuatoTop({
+		showHeight : 300,//设置滚动高度时显示
+		speed : 500 //返回顶部的速度以毫秒为单位
+	});
+});
+
 //显示对应的行程详情
  function dis(num){
     $('.dis').hide().eq(num).show();

@@ -28,4 +28,6 @@ public interface LoginService {
 	public void update(Login l);
 	
 	public Login getLoginByLogincode(String logincode);
+	
+	public void updateIsfirst(Login l);
 }

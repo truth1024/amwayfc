@@ -78,9 +78,10 @@ public class TransactionServiceImpl implements TransactionService {
 					deletenum = numMap2.get(jid);
 				}
 				log.debug("title: {};parnum : {};remainnum : {};deletenum : {}",
-						new Object[]{r.getTitle(),numMap.get(jid),remainnumstr,deletenum});
+						new Object[]{r.getTitle(),(numMap != null && numMap.get(jid) != null ? numMap.get(jid) : 0)
+						,remainnumstr,deletenum});
 				int remainnum = Integer.parseInt(remainnumstr);
-				int parnum = deletenum-(numMap.get(jid) != null ? numMap.get(jid) : 0);
+				int parnum = deletenum-(numMap != null && numMap.get(jid) != null ? numMap.get(jid) : 0);
 				//剩余人数不够使
 				if(remainnum < -parnum){
 					throw new Exception(r.getTitle());
@@ -94,7 +95,9 @@ public class TransactionServiceImpl implements TransactionService {
 			//删除用户行程
 			userJourneyMapper.deleteByLogincode(logincode);
 			//插入用户行程
-			userJourneyMapper.batchInsert(ujs);
+			if(ujs != null){
+				userJourneyMapper.batchInsert(ujs);
+			}
 			//更新剩余人数
 			for(Map<String,Object> map : mapList){
 				journeyMapper.updateJoinNum(map);

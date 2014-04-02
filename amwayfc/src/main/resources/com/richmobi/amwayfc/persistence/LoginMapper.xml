@@ -45,4 +45,13 @@
 		WHERE 
 			logincode = #{logincode}
 	</update>
+	
+	<update id="updateIsfirst" parameterType="login">
+		UPDATE
+			t_login
+		SET
+			isfirst = #{isfirst}
+		WHERE 
+			logincode = #{logincode}
+	</update>
 </mapper>

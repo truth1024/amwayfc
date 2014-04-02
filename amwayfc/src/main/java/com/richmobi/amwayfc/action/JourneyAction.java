@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.richmobi.amwayfc.domain.Journey;
+import com.richmobi.amwayfc.domain.Login;
 import com.richmobi.amwayfc.domain.User;
 import com.richmobi.amwayfc.domain.UserJourney;
 import com.richmobi.amwayfc.service.JourneyService;
@@ -106,7 +107,10 @@ public class JourneyAction extends BasicAction {
 			log.debug("parnum : {}",parnum);
 			log.debug("ujs : {}",ujs);
 			tip = transactionService.insertJourney(logincode, ujs, parnum);
-			if(tip.equals("success")){				
+			if(tip.equals("success")){
+				updateLoginStatus(logincode, 3);
+				Login login = loginService.getLoginByLogincode(logincode);
+				request.getSession().setAttribute(Constant.SESSION_NAME, login);
 				status = 200;
 			}else{
 				status = 400;
@@ -127,6 +131,39 @@ public class JourneyAction extends BasicAction {
 			status = 500;
 		}
 		
+		return SUCCESS;
+	}
+	
+	public String step4delete(){
+		try {
+			String logincode = getSessionLogin().getLogincode();
+			tip = transactionService.insertJourney(logincode, null, null);
+			if(tip.equals("success")){
+				updateLoginStatus(logincode, 2);
+				Login login = loginService.getLoginByLogincode(logincode);
+				request.getSession().setAttribute(Constant.SESSION_NAME, login);
+				status = 200;
+			}else{
+				status = 400;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
+		return SUCCESS;
+	}
+	
+	public String step4confirm(){
+		try {
+			String logincode = getSessionLogin().getLogincode();
+			updateLoginStatus(logincode, 4);
+			Login login = loginService.getLoginByLogincode(logincode);
+			request.getSession().setAttribute(Constant.SESSION_NAME, login);
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
 		return SUCCESS;
 	}
 	

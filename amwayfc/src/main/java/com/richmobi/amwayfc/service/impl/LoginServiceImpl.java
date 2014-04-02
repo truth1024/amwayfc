@@ -84,5 +84,18 @@ public class LoginServiceImpl implements LoginService {
 	public Login getLoginByLogincode(String logincode) {
 		return loginMapper.getLoginByLogincode(logincode);
 	}
+	
+	/**
+	 * @Title: updateIsfirst
+	 * @Description:根据户籍编号更新状态
+	 * @param logincode
+	 * @return
+	 * @author Xuehan.Li
+	 * @date 2014年3月29日 下午11:01:47
+	 */
+	@Override
+	public void updateIsfirst(Login l) {
+		loginMapper.updateIsfirst(l);
+	}
 
 }

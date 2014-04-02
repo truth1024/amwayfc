@@ -29,4 +29,6 @@ public interface LoginMapper {
 	
 	void update(Login l);
 	
+	void updateIsfirst(Login l);
+	
 }
