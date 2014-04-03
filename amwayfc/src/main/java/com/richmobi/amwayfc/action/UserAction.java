@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.richmobi.amwayfc.domain.Login;
 import com.richmobi.amwayfc.domain.User;
 import com.richmobi.amwayfc.domain.UserJourney;
+import com.richmobi.amwayfc.service.EmailService;
 import com.richmobi.amwayfc.service.UserJourneyService;
 import com.richmobi.amwayfc.service.UserService;
 
@@ -24,11 +25,14 @@ public class UserAction extends BasicAction {
 	private List<User> usFC;
 	private List<UserJourney> ujs;
 	private int isfirst;
+	private String email;
 	
 	@Autowired
 	UserService userService;
 	@Autowired
 	UserJourneyService userJourneyService;
+	@Autowired
+	EmailService emailService;
 	
 	public String step2users(){
 		try {
@@ -61,6 +65,21 @@ public class UserAction extends BasicAction {
 			String logincode = l.getLogincode();
 			isfirst = l.getIsfirst();
 			us = userService.getUsersByLogincode(logincode);
+			status = 200;
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = 500;
+		}
+		return SUCCESS;
+	}
+	
+	public String step4email(){
+		try {
+			log.debug("email : {}",email);
+			Login l = getSessionLogin();
+			String logincode = l.getLogincode();
+			us = userService.getUsersByLogincode(logincode);
+			emailService.sendEmail(us, email);
 			status = 200;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,5 +129,11 @@ public class UserAction extends BasicAction {
 	}
 	public void setIsfirst(int isfirst) {
 		this.isfirst = isfirst;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -10,11 +10,14 @@ package com.richmobi.amwayfc.service;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.richmobi.amwayfc.AbstractTestCase;
+import com.richmobi.amwayfc.domain.User;
 
 /** 
  * @ClassName: EmailServiceTest
@@ -27,6 +30,8 @@ public class EmailServiceTest extends AbstractTestCase{
 
 	@Autowired
 	EmailService emailService;
+	@Autowired
+	UserService userService;
 	
 	/** 
 	 * @Title: setUp
@@ -45,7 +50,9 @@ public class EmailServiceTest extends AbstractTestCase{
 	 */
 	@Test
 	public void testSendEmail() throws Exception {
-		assertEquals(true, emailService.sendEmail(user,"ddddd"));
+//		List<User> us = userService.getUsersByLogincode("190099");
+//		List<User> us = userService.getUsersByLogincode("360647");
+//		assertEquals(true, emailService.sendEmail(us,"xuehan.li@tendcloud.com"));
 	}
 
 }

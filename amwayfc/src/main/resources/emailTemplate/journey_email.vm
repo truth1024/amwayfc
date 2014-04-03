@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邮件</title>
+<style>
+.table { border:1px solid #fff; border-collapse: collapse}
+.table th { background:#eac495}
+.table td , .table th { border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; }
+.table td { background:#feefdd}
+
+.table th, .table td  { text-align:left; padding:8px 10px;}
+
+
+.explain { clear:both; display:block; text-align:center; padding-top:30px; color:#ff8d00; font-size:13px}
+
+.left { float:left; margin-bottom:20px; margin-right:20px;}
+</style>
+</head>
+<body>
+#set($num=$us.size())
+<table style="margin: 0 auto;">
+    <tr><td style=" clear:both;font-weight: bold; color:#4f3431;font-size:16px;" colspan="2">行程安排</td></tr>
+    <tr>
+#foreach( $u in $us)
+	    <td>
+	      	<table style="border:1px solid #fff; border-collapse: collapse;float:left; margin-bottom:20px; margin-right:20px;" width="430" border="0" cellspacing="0" cellpadding="0" class="table left">
+	      		<tr>
+	      			<th style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:center; padding:8px 10px;background:#eac495" scope="col" colspan="2">$u.name</th>
+	      		</tr>
+	      		<tr>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd" width="100" bgcolor="#efefef">日期</td>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">行程</td></tr>
+	      		<tr>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">7月18日</td>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">法国尼斯</td>
+	      		</tr>
+	      		<tr>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">7月19日</td>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">法国漫步戛纳</td>
+	      		</tr>
+	      		<tr>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">7月20日</td>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">法国恋恋薰衣草</td>
+	      		</tr>
+	      	#foreach($j in $u.js)
+	      		<tr>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">#if($j.id < 9)7月21日 #else 7月22日 #end</td>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">$j.title</td>
+	      		</tr>
+	      	#end
+	      		<tr>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">7月23日</td>
+	      			<td style=" border:1px solid #fff; line-height:22px;color:#4f3431; font-size:14px; text-align:left; padding:8px 10px;background:#feefdd">西班牙巴塞罗那</td>
+	      		</tr>
+	    	</table>
+	   	</td>
+    #if($velocityCount != 1 && $velocityCount%2 == 0 && $velocityCount < $us.size())
+	</tr>
+	<tr>
+    #end
+#end
+    </tr>
+    <tr><td colspan="2" style="clear:both;text-align:center; padding-top:30px; color:#ff8d00; font-size:13px">请您核对个人信息，若个人信息有误，请拨打热线电话：021-23056839，周一至周五，每天09:30—18:30，将有工作人员为您服务。</td></tr>
+</table>
+</body>
+</html>

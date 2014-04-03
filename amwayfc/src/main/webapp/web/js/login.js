@@ -103,7 +103,7 @@ function update_password_callback(data){
 		alert(data.tip);
 	}else{
 		alert('您的密码已修改成功！点击“确定”，进入在线注册流程。');
-		lf('step01.html');
+		lf('step02.html');
 	}
 };
 

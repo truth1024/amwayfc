@@ -35,17 +35,14 @@ INSERT INTO `t_journey` VALUES ('2', '戛纳', '法国', '2014-07-19 08:00:00', 
 INSERT INTO `t_journey` VALUES ('3', '蒙地卡罗', '摩纳哥公园', '2014-07-19 21:00:00', '2014-07-19 22:30:00', null, null, '1', null, null, null, null);
 INSERT INTO `t_journey` VALUES ('4', '马赛', '法国', '2014-07-20 15:52:18', null, null, null, '1', null, null, null, null);
 INSERT INTO `t_journey` VALUES ('5', '巴塞隆拿返回各地', '【蒙追山】--【城堡公园】--【LA ROCA Village Outlets】', '2014-07-23 15:52:52', null, null, null, '1', null, null, null, null);
-INSERT INTO `t_journey` VALUES ('6', '经典·马赛——探寻圣地', '【马赛旧港】--【圣母加德大教堂】--【隆尚宫】--【欧洲和地中海文明博物馆】', '2014-07-21 15:53:21', null, '/web/journeyIntroduce.html#3', '120', '1', '117', '7.5', '酷爱历史', '★★★');
-INSERT INTO `t_journey` VALUES ('7', '恬静·马赛——峡湾悠荡', '【卡西斯】--【卡朗格峡湾】', '2014-07-21 15:53:58', null, '/web/journeyIntroduce.html#4', '120', '1', '117', '8', '探索求新', '★★★★★');
-INSERT INTO `t_journey` VALUES ('8', '激情·马赛——航海魅力', '【帆船出海】--【伊夫岛】--【伊夫堡】', '2014-07-21 15:54:52', null, '/web/journeyIntroduce.html#5', '54', '2', '54', '7.75', '热爱自然', '★★★');
+INSERT INTO `t_journey` VALUES ('6', '经典·马赛——探寻圣地', '【马赛旧港】--【圣母加德大教堂】--【隆尚宫】--【欧洲和地中海文明博物馆】', '2014-07-21 15:53:21', null, '/web/journeyIntroduce.html#3', '100', '1', '100', '7.5', '酷爱历史', '★★★');
+INSERT INTO `t_journey` VALUES ('7', '恬静·马赛——峡湾悠荡', '【卡西斯】--【卡朗格峡湾】', '2014-07-21 15:53:58', null, '/web/journeyIntroduce.html#4', '110', '1', '110', '8', '探索求新', '★★★★★');
+INSERT INTO `t_journey` VALUES ('8', '激情·马赛——航海魅力', '【帆船出海】--【伊夫岛】--【伊夫堡】', '2014-07-21 15:54:52', null, '/web/journeyIntroduce.html#5', '30', '2', '30', '7.75', '热爱自然', '★★★');
 INSERT INTO `t_journey` VALUES ('9', '意境·巴塞罗那', '【奎尔公园】--【圣家族大教堂】--【感恩大道】', '2014-07-22 15:55:31', null, '/web/journeyIntroduce.html#6', null, '1', null, '7.5', '家庭同乐', '★★★');
 INSERT INTO `t_journey` VALUES ('10', '华彩·巴塞罗那', '【蒙追山】--【城堡公园】--【LA ROCA Village Outlets】', '2014-07-22 15:55:52', null, '/web/journeyIntroduce.html#7', null, '1', null, '6.5', '老少皆宜', '★★★');
 INSERT INTO `t_journey` VALUES ('11', '自由.马赛 —— 畅享邮轮', '', '2014-07-21 00:00:00', null, null, null, '1', null, null, null, null);
 INSERT INTO `t_journey` VALUES ('12', '自行安排', null, '2014-07-22 00:00:00', null, null, null, '1', null, null, null, null);
 
-update t_journey set remainnum = remainnum-20,num = num-20 where id = 6;
-update t_journey set remainnum = remainnum-10,num = num-10 where id = 7;
-update t_journey set remainnum = remainnum-24,num = num-24 where id = 8;
 -- ----------------------------
 -- Table structure for `t_login`
 -- ----------------------------
