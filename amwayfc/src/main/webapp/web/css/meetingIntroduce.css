@@ -12,4 +12,12 @@
 
 .introduceWords h5 { display:block; zoom:1; overflow:hidden; background:#eac495; padding:6px 10px; margin-bottom:20px; font-size:15px;}
 .introduceWords ol { padding-bottom:20px;}
+.explain{
+	clear: both;
+display: block;
+text-align: center;
+padding-top: 30px;
+color: #ff8d00;
+font-size: 13px;
+}
 

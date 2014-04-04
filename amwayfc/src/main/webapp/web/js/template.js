@@ -49,7 +49,7 @@
               		<tr><td>签证</td><td>{u.visa}</td></tr>\
               		<tr><td>机票</td><td>{u.airticket}</td></tr>\
               		<tr><td>饮食禁忌</td><td>{u.diet}</td></tr>\
-              		<tr><td>纽约项目电话</td><td>{u.phone}</td></tr>\
+              		<tr><td>电话</td><td>{u.phone}</td></tr>\
             	</table>\
         	{else}\
         		<table width="430" border="0" cellspacing="0" cellpadding="0" class="table grey">\
@@ -77,7 +77,7 @@
               		<tr><td>签证</td><td>{u.visa}</td></tr>\
               		<tr><td>机票</td><td>{u.airticket}</td></tr>\
               		<tr><td>饮食禁忌</td><td>{u.diet}</td></tr>\
-              		<tr><td>纽约项目电话</td><td>{u.phone}</td></tr>\
+              		<tr><td>电话</td><td>{u.phone}</td></tr>\
             	</table>\
         	{else}\
         		<table width="430" border="0" cellspacing="0" cellpadding="0" class="table grey">\
@@ -92,7 +92,7 @@
 
 	template.compile('step4users',
 		'{each us as u index}\
-		<div class="{if index%2 == 0}left{else}right{/if}">\
+		<div class="{if index%2 == 0}left{else}right{/if}" style="height:360px;">\
         	<table width="430" border="0" cellspacing="0" cellpadding="0" class="table">\
               	<tr><th scope="col" colspan="2">{u.name}</th></tr>\
               	<tr><td width="100" bgcolor="#efefef">日期</td><td bgcolor="#efefef">行程</td></tr>\
@@ -130,7 +130,7 @@
 		            <td>{j.duration}小时</td>\
 		            <td>{j.suit}</td>\
 		            <td>{j.power}</td>\
-		            <td id="remainnum_{j.id}">{j.remainnum == null ? "无" : j.remainnum}</td>\
+		            <td id="remainnum_{j.id}">{j.remainnum == null ? "无限制" : j.remainnum}</td>\
 		            <td><a href="{j.infopath}" target="_blank">查看详情</a></td>\
 		    	</tr>\
 	          	<tr>\
@@ -185,7 +185,7 @@
 		            <td>{j.duration}小时</td>\
 		            <td>{j.suit}</td>\
 		            <td>{j.power}</td>\
-		            <td>{j.remainnum == null ? "无" : j.remainnum}</td>\
+		            <td>{j.remainnum == null ? "无限制" : j.remainnum}</td>\
 		            <td><a href="{j.infopath}" target="_blank">查看详情</a></td>\
 		    	</tr>\
 	          	<tr>\

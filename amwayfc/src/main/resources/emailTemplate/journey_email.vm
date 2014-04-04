@@ -20,7 +20,7 @@
 <body>
 #set($num=$us.size())
 <table style="margin: 0 auto;">
-    <tr><td style=" clear:both;font-weight: bold; color:#4f3431;font-size:16px;" colspan="2">行程安排</td></tr>
+    <tr><td style="text-align:center; clear:both;font-weight: bold; color:#4f3431;font-size:16px;" colspan="2">2014安利全球政策咨询委员会议（大中华区）行程安排</td></tr>
     <tr>
 #foreach( $u in $us)
 	    <td>
