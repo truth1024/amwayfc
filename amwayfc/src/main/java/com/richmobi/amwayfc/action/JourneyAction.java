@@ -58,7 +58,7 @@ public class JourneyAction extends BasicAction {
 		try {
 			String logincode = getSessionLogin().getLogincode();
 			js = journeyService.getJourneys();
-			us = userService.getUsersByLogincode(logincode);
+			us = userService.getUsersByLogincode(logincode,1);
 			status = 200;
 		} catch (Exception e) {
 			e.printStackTrace();

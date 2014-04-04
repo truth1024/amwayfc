@@ -61,6 +61,10 @@ public class Utils {
 		return basicFormat(myDate, "yyyy-MM-dd");
 	}
 	
+	public static String monthFormat(Date myDate){
+		return basicFormat(myDate,"M月dd日");
+	}
+	
 	/** 
 	* @Title: basicFormat
 	* @Description: 自定义日期格式化

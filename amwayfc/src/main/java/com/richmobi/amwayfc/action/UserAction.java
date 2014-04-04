@@ -37,7 +37,7 @@ public class UserAction extends BasicAction {
 	public String step2users(){
 		try {
 			String logincode = getSessionLogin().getLogincode();
-			us = userService.getUsersByLogincode(logincode);
+			us = userService.getUsersByLogincode(logincode,0);
 			status = 200;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class UserAction extends BasicAction {
 			Login l = getSessionLogin();
 			String logincode = l.getLogincode();
 			isfirst = l.getIsfirst();
-			us = userService.getUsersByLogincode(logincode);
+			us = userService.getUsersByLogincode(logincode,1);
 			status = 200;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class UserAction extends BasicAction {
 			log.debug("email : {}",email);
 			Login l = getSessionLogin();
 			String logincode = l.getLogincode();
-			us = userService.getUsersByLogincode(logincode);
+			us = userService.getUsersByLogincode(logincode,1);
 			emailService.sendEmail(us, email);
 			status = 200;
 		} catch (Exception e) {

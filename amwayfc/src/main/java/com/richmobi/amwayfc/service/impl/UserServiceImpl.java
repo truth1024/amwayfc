@@ -108,8 +108,11 @@ public class UserServiceImpl implements UserService {
 	 * @see com.richmobi.amwayfc.service.UserService#getUsersByLogincode(java.lang.String)
 	 */
 	@Override
-	public List<User> getUsersByLogincode(String logincode) {
-		return userMapper.getUsersByLogincode(logincode);
+	public List<User> getUsersByLogincode(String logincode,int isjoin) {
+		User user = new User();
+		user.setLogincode(logincode);
+		user.setIsjoin(isjoin);
+		return userMapper.getUsersByLogincode(user);
 	}
 
 }

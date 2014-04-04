@@ -56,7 +56,7 @@
               		<tr><th scope="col" colspan="2">{u.name}</th></tr>\
               		<tr><td>出席情况</td><td>不出席</td></tr>\
             	</table>\
-            	<span>尊敬的安利贵宾，您已选择不出席此次纽约研讨会，如有任何问题，请联系属地业务部</span>\
+            	<span class="tips">尊敬的安利贵宾，您已选择不出席此次纽约研讨会，如有任何问题，请联系属地业务部</span>\
         	{/if}\
         	</div>\
 		{/each}'
@@ -84,7 +84,7 @@
               		<tr><th scope="col" colspan="2">{u.name}</th></tr>\
               		<tr><td>出席情况</td><td>不出席</td></tr>\
             	</table>\
-            	<span>尊敬的安利贵宾，您已选择不出席此次纽约研讨会，如有任何问题，请联系属地业务部</span>\
+            	<span class="tips">尊敬的安利贵宾，您已选择不出席此次纽约研讨会，如有任何问题，请联系属地业务部</span>\
         	{/if}\
         	</div>\
 		{/each}'

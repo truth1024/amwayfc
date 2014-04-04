@@ -58,5 +58,5 @@ public interface UserMapper {
 	* @author Xuehan.Li
 	* @date 2014年3月18日 上午11:06:03
 	*/ 
-	List<User> getUsersByLogincode(String logincode);
+	List<User> getUsersByLogincode(User user);
 }

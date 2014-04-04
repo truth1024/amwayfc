@@ -22,9 +22,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -33,6 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import richmobi.commons.utils.Configer;
 
+import com.richmobi.amwayfc.domain.Journey;
 import com.richmobi.amwayfc.domain.Login;
 import com.richmobi.amwayfc.domain.PageResult;
 import com.richmobi.amwayfc.domain.Sms;
@@ -106,9 +109,10 @@ public class ExcelAction extends BasicAction {
 			User u = null;
 			HSSFRow row = null;
 			HSSFCell cell = null;
+			int index = 1;
 			for(int i = 0,len = us.size();i<len;i++){
 				u = us.get(i);
-				row = sheet.createRow(i+1);
+				row = sheet.createRow(index);
 				cell = row.createCell(0);
 				cell.setCellValue(u.getAreacode());
 				cell = row.createCell(1);
@@ -144,6 +148,24 @@ public class ExcelAction extends BasicAction {
 				cell = row.createCell(16);
 				cell.setCellValue(u.getPhone());
 				u = us.get(i);
+				index++;
+				List<Journey> js = u.getJs();
+				if(js != null && js.size() > 0){
+					row = sheet.createRow(index);
+					cell = row.createCell(0);
+					cell.setCellValue("日期");
+					cell = row.createCell(1);
+					cell.setCellValue("行程");
+					index++;
+					for(Journey j : js){
+						row = sheet.createRow(index);
+						cell = row.createCell(0);
+						cell.setCellValue(Utils.monthFormat(j.getStart()));
+						cell = row.createCell(1);
+						cell.setCellValue(j.getTitle());
+						index++;
+					}
+				}
 			}
 		}
 		return sheet;

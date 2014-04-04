@@ -51,8 +51,8 @@ public class EmailServiceTest extends AbstractTestCase{
 	@Test
 	public void testSendEmail() throws Exception {
 //		List<User> us = userService.getUsersByLogincode("190099");
-//		List<User> us = userService.getUsersByLogincode("360647");
-//		assertEquals(true, emailService.sendEmail(us,"xuehan.li@tendcloud.com"));
+		List<User> us = userService.getUsersByLogincode("360647",1);
+		assertEquals(true, emailService.sendEmail(us,"truth88@qq.com"));
 	}
 
 }

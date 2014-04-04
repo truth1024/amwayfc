@@ -71,10 +71,14 @@
 			id = #{id}
 	</update>
 	
-	<select id="getUsersByLogincode" parameterType="string" resultMap="userMap">
+	<select id="getUsersByLogincode" parameterType="user" resultMap="userMap">
 		<include refid="select_user_sql_segment"/>
 		WHERE
 			logincode = #{logincode}
+		<if test="isjoin != 0">
+		AND 
+			isjoin = #{isjoin}
+		</if>
 	</select>
 	
 	<select id="getUsersByCondition" parameterType="map" resultMap="userMap">

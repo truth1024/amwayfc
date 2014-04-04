@@ -67,5 +67,5 @@ public interface UserService {
 	* @author Xuehan.Li
 	* @date 2014年3月18日 上午11:06:03
 	*/ 
-	public List<User> getUsersByLogincode(String logincode);
+	public List<User> getUsersByLogincode(String logincode,int isjoin);
 }

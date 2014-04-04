@@ -40,6 +40,10 @@ function get_users_callback(data){
 			data.us.splice(arr[k],1);
 		}
 		$('.contentMember:eq(0)').append($(template.render('usersFC',data)));
-		$('.contentMember:eq(1)').append($(template.render('users',data)));
+		if(data.us.length === 0){
+			$('.family').hide();
+		}else{			
+			$('.contentMember:eq(1)').append($(template.render('users',data)));
+		}
 	}
 };
