@@ -25,13 +25,20 @@ $(function(){
 		selector_j_a = 'input[name*="'+index+'_u_'+val+'"]',	//行程成人复选框选择
 		selector_j_c = 'input[name*="'+index+'_cu_"]',			//行程小孩复选框选择
 		flag = true,											//确认自行标识
-		remainnumFlag = true									//剩余人数标识
+		remainnumFlag = true,									//剩余人数标识
+		is_can_flag = true
 		;
 		if(checked){	//选中
 			//判断点击的是否为自行成人复选框
-			if(name.indexOf('self') > -1){		//是
-				var tip_info = $('.self_tip:first').text();
-				flag = confirm(tip_info);
+//			if(name.indexOf('self') > -1){		//是
+//				var tip_info = $('.self_tip:first').text();
+//				flag = confirm(tip_info);
+//			}
+			//是否可以参见危险活动标识
+			is_can_flag = ($this.attr('age') == '2' && $this.parent().parent().parent().parent().parent().parent().parent().parent().attr('index') == 2) ? false : true;
+			if(!is_can_flag){
+				alert('激情.马赛—航海魅力”线路消耗体力较大，出于健康考量，只面向18岁以上，60岁以下的家属开放。');
+				return false;
 			}
 			jid = $this.parent().parent().parent().attr('index');
 			if($('#remainnum_'+jid).text() === '0'){

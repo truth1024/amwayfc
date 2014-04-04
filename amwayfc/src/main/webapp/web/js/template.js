@@ -34,6 +34,11 @@
 		}
 	});
 
+	//是否可以参加危险活动标识
+	template.helper('is_can',function(age){
+		return age > 60 ? 2 : 1;
+	});
+	
 	template.compile('usersFC',
 		'{each usFC as u index}\
 			<div class="{if index%2 == 0}left{else}right{/if}">\
@@ -141,7 +146,7 @@
 			                {each us as u}\
                     		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input index="21" name="21_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="21" name="21_u_{u.id}" age="{is_can u.age}" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="/web/images/picCorTop.png" /></i>\
 	                        		<div class="children childName">\
@@ -196,7 +201,7 @@
 			                {each us as u}\
                     		{if u.isadult != 2}\
 	                        	<li>\
-	                        		<input index="22" name="22_u_{u.id}" type="checkbox" value="{u.id}" />{u.name}\
+	                        		<input index="22" name="22_u_{u.id}" age="{is_can u.age}" type="checkbox" value="{u.id}" />{u.name}\
 	                        	{if u.istake == 1 && cus.length > 0}\
 	                        		<i class="children"><img src="/web/images/picCorTop.png" /></i>\
 	                        		<div class="children childName">\

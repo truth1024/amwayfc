@@ -55,7 +55,7 @@ function login_callback(data){
 		alert(data.tip);
 	}else{
 		if(data.isFirst === 1){
-			alert('尊敬的安利贵宾，您已登录成功！首次登录的贵宾请修改密码');
+			alert('尊敬的安利贵宾，您已登录成功！首次登录的贵宾请修改密码\n建议新密码为6位数字。');
 			$('#update_password').show();
 		}else{
 			lf('step04.html');
